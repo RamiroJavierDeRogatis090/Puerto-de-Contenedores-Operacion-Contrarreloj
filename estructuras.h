@@ -1,6 +1,14 @@
 #ifndef ESTRUCTURAS_H_INCLUDED
 #define ESTRUCTURAS_H_INCLUDED
 
+#include "pila.h"
+
+#define TAM_ZONA 4
+#define TAM_BUQUE 5
+#define TAM_CAMION 5
+#define TAM_MUELLE 5
+#define TAM_CONTENEDOR 5
+
 typedef struct
 {
     char idZona[TAM_ZONA];
