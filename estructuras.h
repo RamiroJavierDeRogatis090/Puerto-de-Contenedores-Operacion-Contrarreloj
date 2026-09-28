@@ -20,17 +20,15 @@ typedef struct
 typedef struct
 {
     char idBuque[TAM_BUQUE];
-    tPila contenedores;
+    tCola contenedores;
     unsigned capacidad;
     unsigned cantAlmacenada;
-    unsigned tiempoArribo;
 }tBuque;
 
 typedef struct
 {
     char idCamion[TAM_CAMION];
     char idContenedor[TAM_CONTENEDOR];
-    unsigned tiempoArribo;
 }tCamion;
 
 typedef struct
@@ -38,5 +36,13 @@ typedef struct
     char idMuelle[TAM_MUELLE];
     tBuque *buque;
 }tMuelle;
+
+typedef struct
+{
+    tBuque *buque;
+    tCamion *camion;
+    unsigned tiempoArribo;
+}tArribo;
+
 
 #endif // ESTRUCTURAS_H_INCLUDED
