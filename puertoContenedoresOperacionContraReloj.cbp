@@ -36,6 +36,10 @@
 		</Unit>
 		<Unit filename="cola.h" />
 		<Unit filename="estructuras.h" />
+		<Unit filename="interfaz.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="interfaz.h" />
 		<Unit filename="lista.c">
 			<Option compilerVar="CC" />
 		</Unit>
