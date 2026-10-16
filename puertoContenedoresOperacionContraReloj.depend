@@ -1,0 +1,41 @@
+# depslib dependency file v1.0
+1791061258 source:c:\users\posit\onedrive\documentos\unlam\#algoritmos_y_estructuras_de_datos\puerto-de-contenedores-operacion-contrarreloj\cola.c
+	"cola.h"
+
+1791061258 c:\users\posit\onedrive\documentos\unlam\#algoritmos_y_estructuras_de_datos\puerto-de-contenedores-operacion-contrarreloj\cola.h
+	<stdlib.h>
+	<string.h>
+	"nodo.h"
+
+1791061258 c:\users\posit\onedrive\documentos\unlam\#algoritmos_y_estructuras_de_datos\puerto-de-contenedores-operacion-contrarreloj\nodo.h
+
+1791061258 source:c:\users\posit\onedrive\documentos\unlam\#algoritmos_y_estructuras_de_datos\puerto-de-contenedores-operacion-contrarreloj\lista.c
+	"lista.h"
+
+1791061258 c:\users\posit\onedrive\documentos\unlam\#algoritmos_y_estructuras_de_datos\puerto-de-contenedores-operacion-contrarreloj\lista.h
+	<stdlib.h>
+	<string.h>
+	"nodo.h"
+
+1792109617 source:c:\users\posit\onedrive\documentos\unlam\#algoritmos_y_estructuras_de_datos\puerto-de-contenedores-operacion-contrarreloj\main.c
+	<stdio.h>
+	"comandos.h"
+	"pila.h"
+
+1791061258 source:c:\users\posit\onedrive\documentos\unlam\#algoritmos_y_estructuras_de_datos\puerto-de-contenedores-operacion-contrarreloj\pila.c
+	"pila.h"
+
+1791061258 c:\users\posit\onedrive\documentos\unlam\#algoritmos_y_estructuras_de_datos\puerto-de-contenedores-operacion-contrarreloj\pila.h
+	<stdlib.h>
+	<string.h>
+	"nodo.h"
+
+1792109579 source:c:\users\posit\onedrive\documentos\unlam\#algoritmos_y_estructuras_de_datos\puerto-de-contenedores-operacion-contrarreloj\comandos.c
+	"comandos.h"
+
+1792109542 c:\users\posit\onedrive\documentos\unlam\#algoritmos_y_estructuras_de_datos\puerto-de-contenedores-operacion-contrarreloj\comandos.h
+	<stdio.h>
+	<string.h>
+	<ctype.h>
+	<stdbool.h>
+
