@@ -1,4 +1,3 @@
-
 #include "escenario.h"
 #include "lista.h"
 #include "configuracion.h"
@@ -9,56 +8,110 @@
 int escenario_generar(tConfig cfg, const char* arch)
 {
     FILE* pf;
-    int i, j;
-    unsigned totalCont,cantCam,nroBuque,nroCont;
-    pf=fopen(arch,"wt");
-    if(!pf)
+
+    unsigned cantBuques,cantContBuque,cantCam,totalCont,disponibles,indice,i,j;
+
+    tRefContenedor*contenedores;
+
+    if(arch == NULL || cfg.duracionJornada == 0 || cfg.maxBuques == 0 || cfg.maxContPorBuque == 0)
     {
-        fprintf(stderr,"Error: no se pudo crear '%s'\n",arch);
         return ERR_ARCH;
     }
 
-    fprintf(pf,"JORNADA:%u\n",cfg.duracionJornada);
-    fprintf(pf,"MUELLES:%u\n",cfg.cantMuelles);
-    fprintf(pf,"ZONAS:%u\n",cfg.cantZonas);
-    fprintf(pf,"CAPACIDAD_PILA:%u\n\n",cfg.capacidadPila);
+    contenedores = (tRefContenedor*) malloc((size_t)cfg.maxBuques * cfg.maxContPorBuque * sizeof(tRefContenedor));
 
-    /* BUQUES */
-    fprintf(pf, "[BUQUES]\n");
-
-    for(i=1; i<=cfg.maxBuques; i++)
+    if(contenedores == NULL)
     {
-        fprintf(pf,"B%03d;T=%u;C=",i,(i - 1)*3);
-        for(j=1; j<=cfg.maxContPorBuque; j++)
-        {
-            fprintf(pf,"C%d%02d",i,j);
-            if(j<cfg.maxContPorBuque)
-                fprintf(pf,",");
-        }
-        fprintf(pf, "\n");
+        fprintf(stderr,"Error: memoria insuficiente\n");
+        return MEM_INS;
     }
 
-    fprintf(pf, "\n");
+    pf = fopen(arch,"wt");
 
-    /* CAMIONES */
+    if(pf == NULL)
+    {
+        fprintf(stderr,"Error: no se pudo crear '%s'\n", arch);
+        free(contenedores);
+        return ERR_ARCH;
+    }
+
+    fprintf(pf,"JORNADA:%u\n", cfg.duracionJornada);
+    fprintf(pf,"MUELLES:%u\n", cfg.cantMuelles);
+    fprintf(pf,"ZONAS:%u\n", cfg.cantZonas);
+    fprintf(pf,"CAPACIDAD_PILA:%u\n\n", cfg.capacidadPila);
+
+    cantBuques=(unsigned)(rand() % cfg.maxBuques) + 1;
+
+    totalCont = 0;
+
+    fprintf(pf,"[BUQUES]\n");
+
+    for(i = 1; i <= cantBuques; i++)
+    {
+
+        cantContBuque=(unsigned)(rand() % cfg.maxContPorBuque) + 1;
+
+        fprintf(pf,"B%03u;T=%u;C=",i,(unsigned)(rand() % cfg.duracionJornada));
+
+        for(j = 1; j <= cantContBuque; j++)
+        {
+
+            (contenedores + totalCont)->nroBuque = i;
+            (contenedores + totalCont)->nroCont = j;
+
+            fprintf(pf,"C%u%02u",i,j);
+
+            if(j < cantContBuque)
+            {
+                fprintf(pf,",");
+            }
+
+            totalCont++;
+        }
+
+        fprintf(pf,"\n");
+    }
+
+    fprintf(pf,"\n");
+
+    cantCam = 0;
+
+    if(totalCont > 0 && cfg.maxCamiones > 0)
+    {
+        cantCam = cfg.maxCamiones;
+
+        if(cantCam > totalCont)
+        {
+            cantCam = totalCont;
+        }
+
+        cantCam = (unsigned)(rand() % (cantCam + 1));
+    }
+
+    disponibles = totalCont;
 
     fprintf(pf,"[CAMIONES]\n");
-    totalCont=cfg.maxBuques*cfg.maxContPorBuque;
-    cantCam=cfg.maxCamiones;
 
-    if(cantCam>totalCont)
-        cantCam=totalCont;
-
-    for(i=1; i<=cantCam; i++)
+    for(i = 1; i <= cantCam; i++)
     {
-        nroBuque=((i-1)/cfg.maxContPorBuque)+1;
-        nroCont=((i-1)%cfg.maxContPorBuque)+1;
-        fprintf(pf,"K%03d;T=%u;C=C%d%02d\n",i,i*2,nroBuque,nroCont);
+
+        indice = (unsigned)(rand() % disponibles);
+
+        fprintf(pf,"K%03u;T=%u;C=C%u%02u\n",i,(unsigned)(rand() % cfg.duracionJornada),(contenedores + indice)->nroBuque,(contenedores + indice)->nroCont);
+
+
+        *(contenedores + indice) = *(contenedores + disponibles - 1);
+
+        disponibles--;
     }
 
     fclose(pf);
+
+    free(contenedores);
+
     return ESC_GEN;
 }
+
 
 int escenario_cargar(const char* arch, tEscenario* p)
 {
@@ -86,7 +139,6 @@ int escenario_cargar(const char* arch, tEscenario* p)
 
     while(fgets(linea,sizeof(linea), pf))
     {
-        // Eliminar salto de linea //
         salto = strchr(linea, '\n');
 
         if(salto)
@@ -194,9 +246,6 @@ int escenario_cargar(const char* arch, tEscenario* p)
     fclose(pf);
     return ESC_CAR;
 }
-
-
-
 
 
 int cmpArribo(const void* d1, const void* d2)

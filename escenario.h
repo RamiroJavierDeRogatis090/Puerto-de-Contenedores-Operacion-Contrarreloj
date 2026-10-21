@@ -1,6 +1,7 @@
 #ifndef ESCENARIO_H_INCLUDED
 #define ESCENARIO_H_INCLUDED
 
+#define MEM_INS 1
 #define ESC_GEN 1
 #define ESC_CAR 1
 #define ERR_ALM_BUQ 0
@@ -18,8 +19,19 @@
 
 typedef struct
 {
+    unsigned duracionJornada;
+    unsigned cantMuelles;
+    unsigned cantZonas;
+    unsigned capacidadPila;
     tLista arribos;
 } tEscenario;
+
+
+typedef struct
+{
+    unsigned nroBuque;
+    unsigned nroCont;
+} tRefContenedor;
 
 
 int escenario_generar(tConfig cfg, const char*arch);
