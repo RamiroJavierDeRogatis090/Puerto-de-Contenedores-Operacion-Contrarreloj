@@ -156,9 +156,21 @@ int escenario_cargar(const char* arch, tEscenario* p)
         {
             seccion = 2;
         }
-        else if(strncmp(linea,"JORNADA:",8) == 0 || strncmp(linea,"MUELLES:",8) == 0 || strncmp(linea,"ZONAS:", 6) == 0 || strncmp(linea,"CAPACIDAD_PILA:",15) == 0)
+        else if(strncmp(linea,"JORNADA:",8) == 0)
         {
-            // ignora encabezado //
+            sscanf(linea,"JORNADA:%u",&p->duracionJornada);
+        }
+        else if(strncmp(linea,"MUELLES:",8) == 0)
+        {
+            sscanf(linea,"MUELLES:%u",&p->cantMuelles);
+        }
+        else if(strncmp(linea,"ZONAS:", 6) == 0)
+        {
+            sscanf(linea,"ZONAS:%u",&p->cantZonas);
+        }
+        else if(strncmp(linea,"CAPACIDAD_PILA:", 15) == 0)
+        {
+            sscanf(linea,"CAPACIDAD_PILA:%u",&p->capacidadPila);
         }
         else if(seccion == 1)
         {
