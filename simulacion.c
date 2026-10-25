@@ -1,7 +1,6 @@
 #include "estructuras.h"
 #include "simulacion.h"
 
-
 int actualizarArribos(tLista *arribos, tCola *colaB, tCola *colaK, unsigned tiempo)
 {
     tArribo arriboActual;
@@ -42,4 +41,63 @@ void vaciarListaArribos(tLista *arribos)
     }
 }
 
+int asignarBuqueAMuelle(tMuelle *muelles, tCola *colaB, int cantMuelles)
+{
+    tBuque buqueLocal;
+    int i = 0;
+
+    if(colaVacia(colaB))
+        return COLA_VACIA;
+
+    while(i < cantMuelles && !colaVacia(colaB))
+    {
+        if((muelles+i)->buque == NULL)
+        {
+            if(desacolar(colaB, &buqueLocal, sizeof(tBuque)))
+            {
+                (muelles+i)->buque = malloc(sizeof(tBuque));
+                if((muelles+i)->buque == NULL)
+                    return MEMORIA_LLENA;
+                *(muelles+i)->buque = buqueLocal;
+            }
+        }
+        i++;
+    }
+    return EXITO;
+}
+
+tMuelle* crearMuelles(unsigned cantMuelles)
+{
+    int i;
+    tMuelle *muelles = malloc(sizeof(tMuelle)*cantMuelles);
+
+    if(muelles == NULL)
+        return NULL;
+
+    for(i = 0; i < cantMuelles; i++)
+    {
+        sprintf((muelles+i)->idMuelle, "M%d", i + 1);
+        (muelles+i)->buque = NULL;
+    }
+    return muelles;
+}
+
+int crearZonas(tLista *zonas, unsigned cantZonas, unsigned capPilas)
+{
+    int i;
+    tZona zonaLocal;
+
+    for(i=0; i < cantZonas; i++)
+    {
+        sprintf(zonaLocal.idZona, "Z%d", i+1);
+        zonaLocal.capacidad = capPilas;
+        zonaLocal.cantAlmacenada = 0;
+
+        crearPila(&zonaLocal.contenedores);
+
+        if(!InsertarAlFinalLista(zonas, &zonaLocal, sizeof(tZona)))
+            return MEMORIA_LLENA;
+    }
+    return EXITO;
+}
 
