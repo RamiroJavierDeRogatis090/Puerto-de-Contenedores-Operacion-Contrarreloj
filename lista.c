@@ -197,7 +197,7 @@ int verPrimeroLista(tLista *pl, void *dato, unsigned cantBytes)
     if(*pl == NULL)
         return LISTA_VACIA;
 
-    memcpy(dato, (*pl)->dato, MINIMO((*pl)->tamDato, cantBytes));
+    memcpy(dato, (*pl)->dato, MIN((*pl)->tamDato, cantBytes));
 
     return VISTO;
 }
@@ -210,10 +210,28 @@ int verUltimoLista(tLista *pl, void *dato, unsigned cantBytes)
     while((*pl)->sig != NULL)
         pl = &(*pl)->sig;
 
-    memcpy(dato, (*pl)->dato, MINIMO((*pl)->tamDato, cantBytes));
+    memcpy(dato, (*pl)->dato, MIN((*pl)->tamDato, cantBytes));
 
     return VISTO;
 }
 
+int sacarPrimeroLista(tLista *pl, void *dato, unsigned cantBytes)
+{
+    tNodo *elim;
+
+    if(*pl == NULL)
+        return LISTA_VACIA;
+
+    elim = *pl;
+
+    memcpy(dato, elim->dato, MIN(elim->tamDato, cantBytes));
+
+    *pl = elim->sig;
+
+    free(elim->dato);
+    free(elim);
+
+    return ELIMINADO;
+}
 
 
