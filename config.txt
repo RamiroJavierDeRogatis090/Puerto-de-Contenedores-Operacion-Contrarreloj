@@ -1,13 +1,11 @@
-duracion_jornada_minutos:40
-cantidad_muelles:2
-cantidad_zonas_almacenamiento:3
-capacidad_pila:4
-maximo_buques:2
-maximo_contenedores_por_buque:3
-maximo_camiones:4
+duracion_jornada_minutos:30
+cantidad_muelles:1
+cantidad_zonas_almacenamiento:2
+capacidad_pila:5
+maximo_buques:14
+maximo_contenedores_por_buque:5
+maximo_camiones:7
 tiempo_descarga_contenedor:2
 tiempo_reubicacion_contenedor:1
 tiempo_carga_camion:2
 
-clave_inventada:999
-esto_no_es_valido
