@@ -1,7 +1,5 @@
 #include "comandos.h"
 
-#define OK 0
-
 #define ES_LETRA_MAY(c)  ((c) >= 'A' && (c) <= 'Z')
 #define ES_LETRA_MIN(c)  ((c) >= 'a' && (c) <= 'z')
 #define ES_DIGITO(c)     ((c) >= '0' && (c) <= '9')
@@ -123,14 +121,23 @@ void comandoSolicitar(tComando *cmd)
     comandoExtraer(buffer, cmd);
 }
 
+void comandoInformar(const tComando *cmd)
+{
+    printf("\n--- Comando recibido ---\n");
+    printf("tipo : %s (%d)\n", comandoNombre(cmd->tipo), cmd->tipo);
+    printf("arg_1: '%s'\n", cmd->arg_1);
+    printf("arg_2: '%s'\n\n", cmd->arg_2);
+}
+
 void _comandoEsperar(unsigned *cronometro)
 {
     (*cronometro)++;
 }
 
-void _comandoDescargar(unsigned *cronometro)
+int _comandoDescargar(unsigned *cronometro)
 {
     (*cronometro)++;
+    return OK;
 }
 
 void _comandoEntregar(unsigned *cronometro)

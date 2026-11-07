@@ -5,6 +5,7 @@
 #include <string.h>
 #include <ctype.h>
 #include <stdbool.h>
+#include "estructuras.h"
 
 #define FIN 8
 
@@ -59,9 +60,10 @@ bool comandoValidar(const char *comando);
 void comandoExtraer(const char *comando, tComando *cmd);
 void _mostrarComandos();
 void comandoSolicitar(tComando *cmd);
+void comandoInformar(const tComando *cmd);
 
 void _comandoEsperar(unsigned *cronometro);
-void _comandoDescargar(unsigned *cronometro);
+int _comandoDescargar(unsigned *cronometro);
 void _comandoEntregar(unsigned *cronometro);
 void _comandoReubicar(unsigned *cronometro);
 void _comandoVer(unsigned *cronometro);

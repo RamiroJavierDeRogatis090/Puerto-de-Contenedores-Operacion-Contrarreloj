@@ -1,0 +1,105 @@
+#include "comando.h"
+
+void operaciones(tSimulacion *sim, const tConfig *pConfig, tPuntos *puntaje, unsigned *tiempo)
+{
+    char op[TAM_OP], origen[TAM_ORIGEN], destino[TAM_DESTINO], comando[20];
+    int operacionCompletada = 0, codigoOp;
+    //tHistorial opActual;
+
+    while(operacionCompletada == 0)
+    {
+        printf("\nOPERADOR>");
+
+        gets(comando);
+
+        sscanf(comando, "%s %s %s", op, origen, destino);
+
+        printf("\nCOMANDO DEL OPERADOR: %s %s %s\n", op, origen, destino);
+
+        operacionCompletada = 1;
+        if(strcmpi(op, "DES") == 0)
+        {
+            codigoOp = CMD_DES;
+        }
+        else if(strcmpi(op, "ENT") == 0)
+        {
+            codigoOp = CMD_ENT;
+        }
+        else if(strcmpi(op, "REU") == 0)
+        {
+            codigoOp = CMD_REU;
+        }
+        else if(strcmpi(op, "ESP") == 0)
+        {
+            codigoOp = CMD_ESP;
+        }
+        else if(strcmpi(op, "VER") == 0)
+        {
+            codigoOp = CMD_VER;
+        }
+        else
+            codigoOp = CMD_INVALIDO;
+
+        switch(codigoOp)
+        {
+            case 1:
+                operacionCompletada = 1;
+                /*
+                if(comandoDescarga())
+                {
+                    operacionCompletada = 1;
+                    ///opActual; --> se guarda el historial. y se encola
+                }*/
+                puts("ERROR DE DESCARGA.");
+                break;
+            case 2:
+                operacionCompletada = 1;
+                /*if(comandoEntrega())
+                {
+                    operacionCompletada = 1;
+                    ///opActual; --> se guarda el historial. y se encola
+                }*/
+                puts("ERROR DE ENTREGA.");
+                break;
+            case 3:
+                operacionCompletada = 1;
+                /*if(comandoReubicar())
+                {
+                    operacionCompletada = 1;
+                    ///opActual; --> se guarda el historial. y se encola
+                }*/
+                puts("ERROR DE REUBICACION.");
+                break;
+            case 4:
+                (*tiempo)++;
+                operacionCompletada = 1;
+                break;
+            case 5:
+                operacionCompletada = 1;
+                /*if(comandoVer())
+                {
+                    operacionCompletada = 1;
+                }*/
+                puts("ERROR DE VISTA.");
+                break;
+            default:
+                puts("OPERACION INVALIDA.");
+                break;
+        }
+
+
+        //system("pause");
+    }
+}
+
+int comandoEntregar(tSimulacion *sim, const char *origen, const char *destino)
+{
+    tZona zonaLocal;
+    tCamion camionLocal;
+
+    sim->
+}
+int comandoDescargar();
+int comandoReubicar();
+int comandoVer();
+

@@ -1,39 +1,28 @@
-#include <stdio.h>
-#include "comandos.h"
-#include "pila.h"
-
-#define SIEMPRE 1
-
-int main(void)
+#include "estructuras.h"
+#include "simulacion.h"
+int main()
 {
-    tComando cmd;
+    tConfig config;
+    tEscenario escenario;
+    if(configLeer("config.txt", &config))
+        puts("SE LEYO EL ARCH DE CONFIGURACION.");
+    else
+        puts("NO SE PUDO LEER EL ARCHIVO DE CONFIGURACION.");
 
-    unsigned cronometro = 0;
-    //printf("\n[MAIN] Cronometro antes del comando: %d\n", cronometro);
+    if(escenario_generar(config, "puerto.txt"))
+        puts("SE LEYO EL ARCH DE PUERTO.");
+    else
+        puts("NO SE PUDO LEER EL ARCHIVO DE CONFIGURACION.");
 
-    while(SIEMPRE)
-    {
-        comandoSolicitar(&cmd);
+    if(escenario_cargar("puerto.txt", &escenario, &config))
+        puts("SE GENERO EL ARCHIVO DEL PUERTO.");
+    else
+        puts("NO SE PUDO CARGAR EL ARCHIVO DE PUERTO.");
 
-        printf("\n--- Comando recibido ---\n");
-        printf("tipo : %s (%d)\n", comandoNombre(cmd.tipo), cmd.tipo);
-        printf("arg_1: '%s'\n", cmd.arg_1);
-        printf("arg_2: '%s'\n\n", cmd.arg_2);
+    if(simulacionPrincipal(&escenario, &config))
+        puts("SE EJECUTO LA SIMULACION.");
 
-        unsigned rdoEjecucion = comandoEjecutar(&cmd, &cronometro);
-        if(rdoEjecucion == FIN)
-        {
-            puts("\nFinalizando ejecucion!");
-            return FIN;
-        }
-        else if(rdoEjecucion)
-        {
-            puts("\nComando invalido!");
-            return rdoEjecucion;
-        }
+    puts("FIN DE LA SIMULACION");
 
-        //printf("\n[MAIN] Cronometro luego del comando: %d\n", cronometro);
-    }
-
-    return OK;
+    return 0;
 }
