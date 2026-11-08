@@ -11,12 +11,12 @@
 #define ARRIBO_IGUAL    0
 #define ARRIBO_MAYOR    1
 
-#include "pila.h"
-#include "lista.h"
-#include "cola.h"
+#include <time.h>
 #include "configuracion.h"
 #include "estructuras.h"
-#include <time.h>
+#include "pila.h"
+#include "cola.h"
+#include "lista.h"
 
 
 typedef struct
@@ -26,7 +26,7 @@ typedef struct
     unsigned cantZonas;
     unsigned capacidadPila;
     tLista arribos;
-} tEscenario;
+}tEscenario;
 
 
 typedef struct

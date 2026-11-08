@@ -55,10 +55,6 @@ int configLeer(const char* arch,tConfig* salida)
                 fprintf(stderr,"Advertencia: clave desconocida '%s'\n",clave);
             }
         }
-        else
-        {
-            fprintf(stderr,"Advertencia: linea invalida -> %s", linea);
-        }
     }
 
     fclose(pf);

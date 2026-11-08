@@ -1,9 +1,13 @@
 #ifndef SIMULACION_H_INCLUDED
 #define SIMULACION_H_INCLUDED
 
-#include "estructuras.h"
-#include "configuracion.h"
 #include "escenario.h"
+#include "configuracion.h"
+#include "estructuras.h"
+
+#define PUNTOS_PEN_CAMION 2
+#define PUNTOS_CONT_ENTREGADO 10
+#define PUNTOS_BUQUE_LIBRE 5
 
 typedef struct
 {
@@ -11,6 +15,7 @@ typedef struct
     unsigned contEntregados;
     unsigned buquesDesc;
     unsigned cantReorg;
+    unsigned camionesPen;
 }tPuntos;
 
 typedef struct
@@ -31,7 +36,7 @@ void vaciarMuelles(tMuelle *muelle, int cantMuelles);
 void vaciarColaBuques(tCola *cBuques);
 void vaciarZonas(tLista *zonas);
 int simulacionPrincipal(tEscenario *pEsc, const tConfig *pConfig);
-void operaciones(tSimulacion *sim, const tConfig *pConfig, tPuntos *puntaje, unsigned *tiempo);
+void contarPenalizaciones(tPuntos *puntaje, tCola *colaCamiones);
 
 
 #endif // SIMULACION_H_INCLUDED

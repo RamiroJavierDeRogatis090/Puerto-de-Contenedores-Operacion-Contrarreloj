@@ -1,9 +1,10 @@
 #include "comando.h"
 
-void operaciones(tSimulacion *sim, const tConfig *pConfig, tPuntos *puntaje, unsigned *tiempo)
+void operaciones(tSimulacion *sim, const tConfig *pConfig, tPuntos *puntaje, unsigned *tiempo, tCola *historialOp)
 {
     char op[TAM_OP], origen[TAM_ORIGEN], destino[TAM_DESTINO], comando[TAM_COMANDO];
     int operacionCompletada = 0, codigoOp;
+    tHistorial opActual;
 
     system("cls");
     mostrarEstadoTurno(sim, *tiempo);
@@ -41,7 +42,16 @@ void operaciones(tSimulacion *sim, const tConfig *pConfig, tPuntos *puntaje, uns
                 if(comandoDescargar(sim, origen, destino, puntaje, &opActual))
                 {
                     operacionCompletada = 1;
+
+                    strcpy(opActual.op, "DES");
+
+                    opActual.t_inicio = *tiempo;
+
                     *tiempo += pConfig->tiempDesCont;
+
+                    opActual.t_fin = *tiempo;
+
+                    acolar(historialOp, &opActual, sizeof(tHistorial));
                 }
                 else
                     puts("--ERROR AL INGRESAR ORIGEN/DESTINO O ZONAS DE ALMACENAMIENTO LLENAS--");
@@ -50,7 +60,16 @@ void operaciones(tSimulacion *sim, const tConfig *pConfig, tPuntos *puntaje, uns
                 if(comandoEntregar(sim, &opActual))
                 {
                     operacionCompletada = 1;
+
+                    strcpy(opActual.op, "ENT");
+                    opActual.t_inicio = *tiempo;
+
                     *tiempo += pConfig->tiempCarCami;
+
+                    opActual.t_fin = *tiempo;
+
+                    acolar(historialOp, &opActual, sizeof(tHistorial));
+
                     puntaje->contEntregados++;
                     puntaje->puntos += PUNTOS_CONT_ENTREGADO;
                 }
@@ -61,7 +80,16 @@ void operaciones(tSimulacion *sim, const tConfig *pConfig, tPuntos *puntaje, uns
                 if(comandoReubicar(sim, origen, destino, &opActual))
                 {
                     operacionCompletada = 1;
+
+                    strcpy(opActual.op, "REU");
+                    opActual.t_inicio = *tiempo;
+
                     *tiempo += pConfig->tiempReuCont;
+
+                    opActual.t_fin = *tiempo;
+
+                    acolar(historialOp, &opActual, sizeof(tHistorial));
+
                     puntaje->cantReorg++;
                 }
                 else
@@ -69,7 +97,14 @@ void operaciones(tSimulacion *sim, const tConfig *pConfig, tPuntos *puntaje, uns
                 break;
             case CMD_ESP:
                 operacionCompletada = 1;
+
+                strcpy(opActual.op, "ESP");
+                opActual.t_inicio = *tiempo;
+
                 (*tiempo)++;
+
+                opActual.t_fin = *tiempo;
+                acolar(historialOp, &opActual, sizeof(tHistorial));
                 break;
             case CMD_VER:
                 if(comandoVer(sim))
@@ -82,12 +117,11 @@ void operaciones(tSimulacion *sim, const tConfig *pConfig, tPuntos *puntaje, uns
                 break;
         }
 
-
         //system("pause");
     }
 }
 
-int comandoEntregar(tSimulacion *sim)
+int comandoEntregar(tSimulacion *sim, tHistorial *opActual)
 {
     tZona zonaLocal;
     tCamion camionLocal;
@@ -115,6 +149,8 @@ int comandoEntregar(tSimulacion *sim)
             desacolar(&sim->colaCamiones, &camionLocal, sizeof(tCamion));
             exito = 1;
 
+            strcpy(opActual->contenedor, contTope);
+
             printf("Entrega exitosa: Contenedor %s (Zona %s) entregado al camion %s.\n",
                    contTope, zonaLocal.idZona, camionLocal.idCamion);
         }
@@ -132,7 +168,7 @@ int comandoEntregar(tSimulacion *sim)
     return exito;
 }
 
-int comandoReubicar(tSimulacion *sim, const char *codZonaA, const char *codZonaB)
+int comandoReubicar(tSimulacion *sim, const char *codZonaA, const char *codZonaB, tHistorial *opActual)
 {
     tLista listaAux;
     tZona zonaAux;
@@ -183,11 +219,14 @@ int comandoReubicar(tSimulacion *sim, const char *codZonaA, const char *codZonaB
         {
             desapilar(&zonaAux.contenedores, contMover, TAM_CONTENEDOR);
             zonaAux.cantAlmacenada--;
+            strcpy(opActual->origen, zonaAux.idZona);
         }
         else if(strcmp(zonaAux.idZona, codZonaB) == 0)
         {
             apilar(&zonaAux.contenedores, contMover, strlen(contMover) + 1);
             zonaAux.cantAlmacenada++;
+            strcpy(opActual->destino, zonaAux.idZona);
+            strcpy(opActual->contenedor, contMover);
         }
 
         InsertarAlFinalLista(&sim->zonas, &zonaAux, sizeof(tZona));
@@ -210,7 +249,7 @@ int _buscarMuelle(tMuelle *muelles, unsigned cantMuelles, const char *codMuelle)
     return indice;
 }
 
-int comandoDescargar(tSimulacion *sim, const char *codMuelle, const char *codZona, tPuntos *puntaje)
+int comandoDescargar(tSimulacion *sim, const char *codMuelle, const char *codZona, tPuntos *puntaje, tHistorial *opActual)
 {
     int muelleEncontrado = NO_ENCONTRADO;
     tZona bufferZona;
@@ -246,6 +285,10 @@ int comandoDescargar(tSimulacion *sim, const char *codMuelle, const char *codZon
                 apilar(&bufferZona.contenedores, contDes, TAM_CONTENEDOR);
                 bufferZona.cantAlmacenada++;
                 exito = 1;
+
+                strcpy(opActual->origen, sim->muelle[muelleEncontrado].idMuelle);
+                strcpy(opActual->destino, bufferZona.idZona);
+                strcpy(opActual->contenedor, contDes);
 
                 if(sim->muelle[muelleEncontrado].buque->cantAlmacenada == 0)
                 {
@@ -295,4 +338,95 @@ int comandoVer(tSimulacion *sim)
 
     return OK;
 }
+
+void mostrarEstadoTurno(tSimulacion *sim, unsigned tiempo)
+{
+    int i, primero;
+    char contTope[TAM_CONTENEDOR];
+    tLista listaAux;
+    tPila pilaAux;
+    tZona zonaLocal;
+    tCamion primerCamion;
+
+    printf("\nT=%u\n\n", tiempo);
+
+    for(i = 0; i < sim->escenario->cantMuelles; i++)
+    {
+        if(sim->muelle[i].buque != NULL)
+        {
+            verTope(&sim->muelle[i].buque->contenedores, contTope, TAM_CONTENEDOR);
+            printf("%s: %s -> proximo contenedor %s\n", sim->muelle[i].idMuelle, sim->muelle[i].buque->idBuque, contTope);
+        }
+        else
+            printf("%s: [LIBRE]\n", sim->muelle[i].idMuelle);
+    }
+    printf("\n");
+
+    CrearLista(&listaAux);
+    crearPila(&pilaAux);
+
+    while(sacarPrimeroLista(&sim->zonas, &zonaLocal, sizeof(tZona)))
+    {
+        printf("%s:[", zonaLocal.idZona);
+        primero = 1;
+
+        while(desapilar(&zonaLocal.contenedores, contTope, TAM_CONTENEDOR))
+        {
+            if(!primero)
+                printf("|");
+
+            printf("%s", contTope);
+            primero = 0;
+
+            apilar(&pilaAux, contTope, TAM_CONTENEDOR);
+        }
+        printf("]\t");
+
+        while(desapilar(&pilaAux, contTope, TAM_CONTENEDOR))
+            apilar(&zonaLocal.contenedores, contTope, TAM_CONTENEDOR);
+
+        InsertarAlFinalLista(&listaAux, &zonaLocal, sizeof(tZona));
+    }
+
+    while(sacarPrimeroLista(&listaAux, &zonaLocal, sizeof(tZona)))
+        InsertarAlFinalLista(&sim->zonas, &zonaLocal, sizeof(tZona));
+
+    printf("\n\n");
+
+    if(verPrimeroEnCola(&sim->colaCamiones, &primerCamion, sizeof(tCamion)))
+        printf("Cola camiones: %s -> solicita %s\n", primerCamion.idCamion, primerCamion.idContenedor);
+    else
+        printf("Cola camiones: vacia\n");
+}
+
+void mostrarHistorialOperaciones(tCola *historialOp)
+{
+    tHistorial opActual;
+
+    printf("\n\n---OPERACIONES REALIZADAS DURANTE LA SIMULACION---\n\n");
+
+    while(desacolar(historialOp, &opActual, sizeof(tHistorial)))
+    {
+        if(strcmp(opActual.op, "DES") == 0)
+        {
+            printf("Tiempo inicio: %d\tTiempo fin: %d\tOP: %s\tORI: %s\tDES: %s\tContenedor: %s\n",
+                   opActual.t_inicio, opActual.t_fin, opActual.op, opActual.origen, opActual.destino, opActual.contenedor);
+        }
+        else if(strcmp(opActual.op, "REU") == 0)
+        {
+            printf("Tiempo inicio: %d\tTiempo fin: %d\tOP: %s\tORI: %s\tDES: %s\tContenedor: %s\n",
+                   opActual.t_inicio, opActual.t_fin, opActual.op, opActual.origen, opActual.destino, opActual.contenedor);
+        }
+        else if(strcmp(opActual.op, "ENT") == 0)
+        {
+            printf("Tiempo inicio: %d\tTiempo fin: %d\tOP: %s\tContenedor: %s\n",
+                   opActual.t_inicio, opActual.t_fin, opActual.op, opActual.contenedor);
+        }
+        else if(strcmp(opActual.op, "ESP") == 0)
+            printf("Tiempo inicio: %d\tTiempo fin: %d\tOP: %s\n",
+                   opActual.t_inicio, opActual.t_fin, opActual.op);
+    }
+}
+
+
 

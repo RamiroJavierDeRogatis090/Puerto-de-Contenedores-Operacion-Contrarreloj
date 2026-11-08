@@ -1,8 +1,5 @@
 #include "escenario.h"
-#include "lista.h"
-#include "configuracion.h"
-#include "estructuras.h"
-
+#include "simulacion.h"
 
 
 int escenario_generar(tConfig cfg, const char* arch)
@@ -241,6 +238,8 @@ int cmpArribo(const void* d1, const void* d2)
     {
         return ARRIBO_MAYOR;
     }
+
+
 
     return ARRIBO_IGUAL;
 }

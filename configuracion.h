@@ -5,6 +5,9 @@
 
 #include <stdio.h>
 #include <string.h>
+#include "pila.h"
+#include "lista.h"
+#include "cola.h"
 
 ///MACROS
 
@@ -14,9 +17,6 @@
 #define TAM_CLAVE 50
 #define TAM_LIS_CONT 200
 
-#include "pila.h"
-#include "lista.h"
-#include "cola.h"
 
 
 typedef struct
