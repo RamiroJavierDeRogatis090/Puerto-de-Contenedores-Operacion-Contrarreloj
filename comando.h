@@ -24,9 +24,6 @@
 /// -- Salidas --
 #define IGUALES 0
 #define ERROR_PARAMETRO 0
-#define ZONA_LLENA 1003
-#define ERROR_MEMORIA 1004
-
 
 /// Defines
 #define CMD_INVALIDO -1
@@ -49,9 +46,8 @@ typedef struct
 void operaciones(tSimulacion *sim, const tConfig *pConfig, tPuntos *puntaje, unsigned *tiempo);
 int comandoEntregar(tSimulacion *sim);
 int _buscarMuelle(tMuelle *muelles, unsigned cantMuelles, const char *codMuelle);
-int comandoDescargar(tSimulacion *sim, const char *codMuelle, const char *codZona);
+int comandoDescargar(tSimulacion *sim, const char *codMuelle, const char *codZona, tPuntos *puntaje);
 int comandoReubicar(tSimulacion *sim, const char *codZonaA, const char *codZonaB);
 int comandoVer(tSimulacion *sim);
-
 
 #endif // COMANDO_H_INCLUDED

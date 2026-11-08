@@ -5,6 +5,9 @@ void operaciones(tSimulacion *sim, const tConfig *pConfig, tPuntos *puntaje, uns
     char op[TAM_OP], origen[TAM_ORIGEN], destino[TAM_DESTINO], comando[TAM_COMANDO];
     int operacionCompletada = 0, codigoOp;
 
+    system("cls");
+    mostrarEstadoTurno(sim, *tiempo);
+
     while(operacionCompletada == 0)
     {
         op[0] = '\0';
@@ -38,7 +41,6 @@ void operaciones(tSimulacion *sim, const tConfig *pConfig, tPuntos *puntaje, uns
                 if(comandoDescargar(sim, origen, destino, puntaje, &opActual))
                 {
                     operacionCompletada = 1;
-
                     *tiempo += pConfig->tiempDesCont;
                 }
                 else
@@ -48,8 +50,9 @@ void operaciones(tSimulacion *sim, const tConfig *pConfig, tPuntos *puntaje, uns
                 if(comandoEntregar(sim, &opActual))
                 {
                     operacionCompletada = 1;
-
                     *tiempo += pConfig->tiempCarCami;
+                    puntaje->contEntregados++;
+                    puntaje->puntos += PUNTOS_CONT_ENTREGADO;
                 }
                 else
                     puts("--ERROR AL ENTREGAR UN CONTENEDOR: NO SE ENCUENTRA EL CONTENEDOR O NO HAY CAMION PARA ENTREGAR--");
@@ -59,13 +62,14 @@ void operaciones(tSimulacion *sim, const tConfig *pConfig, tPuntos *puntaje, uns
                 {
                     operacionCompletada = 1;
                     *tiempo += pConfig->tiempReuCont;
+                    puntaje->cantReorg++;
                 }
                 else
                     puts("--ERROR AL INGRESAR LAS ZONAS O REVISE LA DISPONIBILIDAD DE LAS ZONAS--");
                 break;
             case CMD_ESP:
-                (*tiempo)++;
                 operacionCompletada = 1;
+                (*tiempo)++;
                 break;
             case CMD_VER:
                 if(comandoVer(sim))
@@ -138,7 +142,7 @@ int comandoReubicar(tSimulacion *sim, const char *codZonaA, const char *codZonaB
     if(strcmp(codZonaA, codZonaB) == 0)
     {
         printf("Error: La zona de origen y destino no pueden ser la misma.\n");
-        return 0;
+        return ERROR;
     }
 
     CrearLista(&listaAux);
@@ -206,7 +210,7 @@ int _buscarMuelle(tMuelle *muelles, unsigned cantMuelles, const char *codMuelle)
     return indice;
 }
 
-int comandoDescargar(tSimulacion *sim, const char *codMuelle, const char *codZona)
+int comandoDescargar(tSimulacion *sim, const char *codMuelle, const char *codZona, tPuntos *puntaje)
 {
     int muelleEncontrado = NO_ENCONTRADO;
     tZona bufferZona;
@@ -247,6 +251,8 @@ int comandoDescargar(tSimulacion *sim, const char *codMuelle, const char *codZon
                 {
                     free(sim->muelle[muelleEncontrado].buque);
                     sim->muelle[muelleEncontrado].buque = NULL;
+                    puntaje->buquesDesc++;
+                    puntaje->puntos += PUNTOS_BUQUE_LIBRE;
                 }
             }
         }
@@ -289,5 +295,4 @@ int comandoVer(tSimulacion *sim)
 
     return OK;
 }
-
 
