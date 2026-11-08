@@ -14,14 +14,6 @@
 #define ERROR 0
 #define OK 1
 
-/*
-typedef struct sNodo
-{
-    void *dato;
-    unsigned tamDato;
-    struct sNodo *sig;
-}tNodo;*/
-
 typedef tNodo* tPila;
 
 void crearPila(tPila *pl);
