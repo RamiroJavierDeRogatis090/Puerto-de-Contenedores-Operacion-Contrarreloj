@@ -1,0 +1,86 @@
+# depslib dependency file v1.0
+1792093716 source:c:\users\usuario\onedrive\desktop\cosas de la facu\algoritmos y estructuras de datos\puerto-de-contenedores-operacion-contrarreloj-leangatti\cola.c
+	"cola.h"
+
+1792093716 c:\users\usuario\onedrive\desktop\cosas de la facu\algoritmos y estructuras de datos\puerto-de-contenedores-operacion-contrarreloj-leangatti\cola.h
+	<stdlib.h>
+	<string.h>
+	"nodo.h"
+
+1792093716 c:\users\usuario\onedrive\desktop\cosas de la facu\algoritmos y estructuras de datos\puerto-de-contenedores-operacion-contrarreloj-leangatti\nodo.h
+
+1793314884 source:c:\users\usuario\onedrive\desktop\cosas de la facu\algoritmos y estructuras de datos\puerto-de-contenedores-operacion-contrarreloj-leangatti\lista.c
+	"lista.h"
+
+1793315045 c:\users\usuario\onedrive\desktop\cosas de la facu\algoritmos y estructuras de datos\puerto-de-contenedores-operacion-contrarreloj-leangatti\lista.h
+	<stdlib.h>
+	<string.h>
+	"nodo.h"
+
+1793980402 source:c:\users\usuario\onedrive\desktop\cosas de la facu\algoritmos y estructuras de datos\puerto-de-contenedores-operacion-contrarreloj-leangatti\main.c
+	"estructuras.h"
+	"simulacion.h"
+
+1792093716 source:c:\users\usuario\onedrive\desktop\cosas de la facu\algoritmos y estructuras de datos\puerto-de-contenedores-operacion-contrarreloj-leangatti\pila.c
+	"pila.h"
+
+1793315028 c:\users\usuario\onedrive\desktop\cosas de la facu\algoritmos y estructuras de datos\puerto-de-contenedores-operacion-contrarreloj-leangatti\pila.h
+	<stdlib.h>
+	<string.h>
+	"nodo.h"
+
+1793980608 c:\users\usuario\onedrive\desktop\cosas de la facu\algoritmos y estructuras de datos\puerto-de-contenedores-operacion-contrarreloj-leangatti\estructuras.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"pila.h"
+	"cola.h"
+	"lista.h"
+
+1794077515 source:c:\users\usuario\onedrive\desktop\cosas de la facu\algoritmos y estructuras de datos\puerto-de-contenedores-operacion-contrarreloj-leangatti\configuracion.c
+	"configuracion.h"
+
+1793996085 c:\users\usuario\onedrive\desktop\cosas de la facu\algoritmos y estructuras de datos\puerto-de-contenedores-operacion-contrarreloj-leangatti\configuracion.h
+	<stdio.h>
+	<string.h>
+	"pila.h"
+	"lista.h"
+	"cola.h"
+
+1794083317 source:c:\users\usuario\onedrive\desktop\cosas de la facu\algoritmos y estructuras de datos\puerto-de-contenedores-operacion-contrarreloj-leangatti\escenario.c
+	"escenario.h"
+	"simulacion.h"
+
+1793996383 c:\users\usuario\onedrive\desktop\cosas de la facu\algoritmos y estructuras de datos\puerto-de-contenedores-operacion-contrarreloj-leangatti\escenario.h
+	<time.h>
+	"configuracion.h"
+	"estructuras.h"
+	"pila.h"
+	"cola.h"
+	"lista.h"
+
+1794179980 c:\users\usuario\onedrive\desktop\cosas de la facu\algoritmos y estructuras de datos\puerto-de-contenedores-operacion-contrarreloj-leangatti\simulacion.h
+	"escenario.h"
+	"configuracion.h"
+	"estructuras.h"
+
+1794180533 source:c:\users\usuario\onedrive\desktop\cosas de la facu\algoritmos y estructuras de datos\puerto-de-contenedores-operacion-contrarreloj-leangatti\simulacion.c
+	"estructuras.h"
+	"simulacion.h"
+	"comando.h"
+
+1794163566 source:c:\users\usuario\onedrive\desktop\cosas de la facu\algoritmos y estructuras de datos\puerto-de-contenedores-operacion-contrarreloj-leangatti\comando.c
+	"comando.h"
+
+1794160197 c:\users\usuario\onedrive\desktop\cosas de la facu\algoritmos y estructuras de datos\puerto-de-contenedores-operacion-contrarreloj-leangatti\comando.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"configuracion.h"
+	"escenario.h"
+	"simulacion.h"
+	"estructuras.h"
+	"pila.h"
+	"cola.h"
+	"lista.h"
+

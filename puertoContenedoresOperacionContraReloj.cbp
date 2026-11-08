@@ -35,6 +35,18 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="cola.h" />
+		<Unit filename="comando.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="comando.h" />
+		<Unit filename="configuracion.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="configuracion.h" />
+		<Unit filename="escenario.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="escenario.h" />
 		<Unit filename="estructuras.h" />
 		<Unit filename="lista.c">
 			<Option compilerVar="CC" />
@@ -43,10 +55,15 @@
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="nodo.h" />
 		<Unit filename="pila.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="pila.h" />
+		<Unit filename="simulacion.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="simulacion.h" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>
