@@ -12,20 +12,26 @@
 #include "cola.h"
 #include "lista.h"
 
-
+///Defines
 #define TAM_OP 4
 #define TAM_COMANDO 15
 #define TAM_ORIGEN 4
 #define TAM_DESTINO 4
+#define OP_DESCARGAR            "DES"
+#define OP_ENTREGAR             "ENT"
+#define OP_REUBICAR             "REU"
+#define OP_ESPERAR              "ESP"
+#define OP_VER                  "VER"
+#define CANT_CAMIONES_VISIBLES  3
+#define TIEMPO_ESPERA           1
+#define SEPARADOR_CONTENEDORES  "|"
+#define SIN_DATO       "-"
+#define LINEA_TABLA    "------------------------------------------------------"
 
-/// -- Auxiliares --
 #define NO_ENCONTRADO -1
-
-/// -- Salidas --
 #define IGUALES 0
 #define ERROR_PARAMETRO 0
 
-/// Defines
 #define CMD_INVALIDO -1
 #define CMD_DES 1
 #define CMD_ENT 2
