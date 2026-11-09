@@ -1,6 +1,14 @@
 #include "operador.h"
 #include "indice.h"
 
+int solicitarNombreOperador(char *nombre)
+{
+    printf("Ingrese su apellido y nombre: ");
+    scanf(" %49[^\n]", nombre);
+    normalizarNombre(nombre);
+    return TODO_OK;
+}
+
 char *normalizarNombre(char* cad)
 {
     char *lect = cad;

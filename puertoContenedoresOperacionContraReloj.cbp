@@ -76,6 +76,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="nodo.h" />
+		<Unit filename="opcionesMenu.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="opcionesMenu.h" />
 		<Unit filename="operador.c">
 			<Option compilerVar="CC" />
 		</Unit>
