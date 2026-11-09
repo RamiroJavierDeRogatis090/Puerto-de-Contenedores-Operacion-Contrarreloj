@@ -8,11 +8,8 @@ int configLeer(const char* arch,tConfig* salida)
     char clave[TAM_CLAVE];
     unsigned valor;
 
-    pf=fopen(arch,"rt");
-
-    if(!pf)
+    if(abrirArchivo(&pf, arch, "rt") != TODO_OK)
     {
-        fprintf(stderr,"Error: no se pudo abrir '%s'\n",arch);
         return ERR_ARCH;
     }
 

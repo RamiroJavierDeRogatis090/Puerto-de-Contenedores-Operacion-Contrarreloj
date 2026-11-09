@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "archivo.h"
 #include "interfaz.h"
 #include "estructuras.h"
 #include "simulacion.h"
@@ -29,13 +30,13 @@ int main()
                                                   };
     const char *titulo = "=== OPERACION CONTRARRELOJ ===";
     char seleccion;
-    if(iniciarGestionOperadores(&indiceOperadores, "operadores.dat", "indice.dat") != TODO_OK)
+    if(iniciarGestionOperadores(&indiceOperadores, ARCH_OPERADORES, ARCH_INDICE) != TODO_OK)
     {
         return EXIT_FAILURE;
     }
     printf("Ingrese su nombre: ");
     scanf(" %49[^\n]", nombre);
-    if(obtenerOperadorActual(&indiceOperadores, nombre, &operadorActual, "operadores.dat", "indice.dat") != TODO_OK)
+    if(obtenerOperadorActual(&indiceOperadores, nombre, &operadorActual, ARCH_OPERADORES, ARCH_INDICE) != TODO_OK)
     {
         return EXIT_FAILURE;
     }
@@ -51,17 +52,17 @@ int main()
             system("CLS");
             printf("\n--- JORNADA ---\n");
 
-            if(configLeer("config.txt", &config))
+            if(configLeer(ARCH_CONFIGURACION, &config))
                 puts("SE LEYO EL ARCH DE CONFIGURACION.");
             else
                 puts("NO SE PUDO LEER EL ARCHIVO DE CONFIGURACION.");
 
-            if(escenario_generar(config, "puerto.txt"))
+            if(escenario_generar(config, ARCH_PUERTO))
                 puts("SE LEYO EL ARCH DE PUERTO.");
             else
                 puts("NO SE PUDO LEER EL ARCHIVO DE CONFIGURACION.");
 
-            if(escenario_cargar("puerto.txt", &escenario, &config))
+            if(escenario_cargar(ARCH_PUERTO, &escenario, &config))
                 puts("SE GENERO EL ARCHIVO DEL PUERTO.");
             else
                 puts("NO SE PUDO CARGAR EL ARCHIVO DE PUERTO.");
@@ -70,11 +71,11 @@ int main()
             {
                 puts("SE EJECUTO LA SIMULACION.");
                 printf("\nPuntaje obtenido: %d\n", resultadoJornada.puntos);
-                retJornada = guardarJornada(&indiceOperadores, operadorActual.nombre, &resultadoJornada, tiempoUtilizado, "jornada.dat");
+                retJornada = guardarJornada(&indiceOperadores, operadorActual.nombre, &resultadoJornada, tiempoUtilizado, ARCH_JORNADAS);
                 if(retJornada == JORNADA_GUARDADA)
                 {
                     puts("JORNADA GUARDADA CORRECTAMENTE.");
-                    retActualizacion = actualizarPuntajeOperador(&indiceOperadores, &operadorActual, resultadoJornada.puntos, "operadores.dat");
+                    retActualizacion = actualizarPuntajeOperador(&indiceOperadores, &operadorActual, resultadoJornada.puntos, ARCH_OPERADORES);
                     if(retActualizacion == OPERADOR_ACTUALIZADO)
                     {
                         printf("\nPuntaje acumulado: %d\n", operadorActual.puntajeAcumulado);
@@ -96,7 +97,7 @@ int main()
         case '2':
             system("CLS");
             printf("\n-- RANKING ---\n");
-            mostrarRanking("operadores.dat");
+            mostrarRanking(ARCH_OPERADORES);
             system("PAUSE");
             break;
         case '3':
@@ -105,7 +106,7 @@ int main()
             strcpy(indiceOperador.clave.nombre, operadorActual.nombre);
             if(buscarEnArbol(&indiceOperadores, &indiceOperador, sizeof(tIndice), compararClaveIdx) == DATO_ENCONTRADO)
             {
-                retJornada = mostrarJornadasOperador("jornada.dat", indiceOperador.indiceRegistro);
+                retJornada = mostrarJornadasOperador(ARCH_JORNADAS, indiceOperador.indiceRegistro);
                 if(retJornada == SIN_JORNADAS)
                 {
                 puts("EL OPERADOR NO TIENE JORNADAS REGISTRADAS.");

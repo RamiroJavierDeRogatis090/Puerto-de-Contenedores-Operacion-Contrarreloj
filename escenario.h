@@ -17,7 +17,7 @@
 #include "pila.h"
 #include "cola.h"
 #include "lista.h"
-
+#include "archivo.h"
 
 typedef struct
 {
