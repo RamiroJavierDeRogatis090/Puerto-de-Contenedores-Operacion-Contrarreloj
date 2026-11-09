@@ -32,12 +32,15 @@ int mostrarJornadasOperador(const char *nombreArchivo, unsigned indiceOperador)
     {
         return ERROR_LECTURA_JORNADAS;
     }
-    printf("\n%-10s %-10s %-12s %-10s %-12s %-12s %-10s\n", "Jornada", "Puntaje", "Entregados", "Buques", "Reubicaciones", "Penalizados", "Tiempo");
-    printf("---------------------------------------------------------------------------------------\n");
     while(fread(&jornada, sizeof(tJornada), 1, arch))
     {
         if(jornada.indiceOperador == indiceOperador)
         {
+            if(jornadasEncontradas == 0)
+            {
+                printf("\n%-10s %-10s %-12s %-10s %-12s %-12s %-10s\n", "Jornada", "Puntaje", "Entregados", "Buques", "Reubicaciones", "Penalizados", "Tiempo");
+                printf("---------------------------------------------------------------------------------------\n");
+            }
             printf("%-10u %-10d %-12u %-10u %-12u %-12u %-10u\n", numeroJornada, jornada.resultado.puntos, jornada.resultado.contEntregados,
                                                                   jornada.resultado.buquesDesc, jornada.resultado.cantReorg, jornada.resultado.camionesPen,
                                                                   jornada.tiempoUtilizado);

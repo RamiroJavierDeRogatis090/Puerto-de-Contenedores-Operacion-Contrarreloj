@@ -1,10 +1,38 @@
 #include "operador.h"
 #include "indice.h"
 
+int validarNombre(const char *nombre)
+{
+    int tieneLetra = 0;
+    while(*nombre)
+    {
+        if(isalpha((unsigned char)*nombre))
+        {
+            tieneLetra = 1;
+        }
+        else
+        {
+            if(!isspace((unsigned char)*nombre))
+            {
+                return 0;
+            }
+        }
+        nombre++;
+    }
+    return tieneLetra;
+}
+
 int solicitarNombreOperador(char *nombre)
 {
-    printf("Ingrese su apellido y nombre: ");
-    scanf(" %49[^\n]", nombre);
+    do
+    {
+        printf("Ingrese su apellido y nombre: ");
+        scanf(" %49[^\n]", nombre);
+        if(!validarNombre(nombre))
+        {
+            puts("NOMBRE INVALIDO. INGRESE CORRECTAMENTE");
+        }
+    }while(!validarNombre(nombre));
     normalizarNombre(nombre);
     return TODO_OK;
 }

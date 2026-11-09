@@ -18,7 +18,9 @@ int pilaLlena(const tPila *pl, unsigned cantBytes)
     auxNodo = malloc(sizeof(tNodo));
 
     if(auxNodo == NULL)
+    {
         return PILA_LLENA;
+    }
 
     auxDato = malloc(cantBytes);
 
@@ -38,12 +40,16 @@ int apilar(tPila *pl, const void *dato, unsigned tam)
     tNodo *nodoNuevo;
 
     if(dato == NULL)
+    {
         return ERROR;
+    }
 
     nodoNuevo = (tNodo*) malloc(sizeof(tNodo));
 
     if(nodoNuevo == NULL)
+    {
         return PILA_LLENA;
+    }
 
     nodoNuevo->dato = malloc(tam);
 
@@ -66,7 +72,9 @@ int desapilar(tPila *pl, void *dato, unsigned cantBytes)
     tNodo *elim;
 
     if(*pl == NULL)
+    {
         return PILA_VACIA;
+    }
 
     elim = *pl;
 
@@ -97,14 +105,12 @@ int verTope(const tPila *pl, void *dato, unsigned cantBytes)
     tNodo *nodo;
 
     if(*pl == NULL)
+    {
         return PILA_VACIA;
+    }
 
     nodo = *pl;
     memcpy(dato, nodo->dato, MIN(nodo->tamDato, cantBytes));
 
     return OK;
 }
-
-
-
-

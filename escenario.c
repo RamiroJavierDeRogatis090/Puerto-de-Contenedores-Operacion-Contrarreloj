@@ -121,7 +121,9 @@ int escenario_cargar(const char* arch, tEscenario* p, tConfig *conf)
     tArribo arribo;
 
     if(arch == NULL || p == NULL)
+    {
         return ERR_ARCH;
+    }
 
     if(abrirArchivo(&pf, arch, "rt") != TODO_OK)
     {
@@ -135,7 +137,9 @@ int escenario_cargar(const char* arch, tEscenario* p, tConfig *conf)
         salto = strchr(linea, '\n');
 
         if(salto)
+        {
             *salto = '\0';
+        }
 
         if(*linea == '\0')
         {
