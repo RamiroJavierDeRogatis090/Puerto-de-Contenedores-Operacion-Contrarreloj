@@ -270,7 +270,7 @@ int comandoReubicar(tSimulacion *sim, const char *codZonaA, const char *codZonaB
     return OK;
 }
 
-int _buscarMuelle(tMuelle *muelles, unsigned cantMuelles, const char *codMuelle)
+int buscarMuelle(tMuelle *muelles, unsigned cantMuelles, const char *codMuelle)
 {
     int i = 0, indice = NO_ENCONTRADO;
 
@@ -294,7 +294,7 @@ int comandoDescargar(tSimulacion *sim, const char *codMuelle, const char *codZon
     tLista listaAux;
     char contDes[TAM_CONTENEDOR];
 
-    muelleEncontrado = _buscarMuelle(sim->muelle, sim->escenario->cantMuelles, codMuelle);
+    muelleEncontrado = buscarMuelle(sim->muelle, sim->escenario->cantMuelles, codMuelle);
 
     if(muelleEncontrado == NO_ENCONTRADO)
     {

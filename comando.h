@@ -51,7 +51,7 @@ typedef struct
 
 void operaciones(tSimulacion *sim, const tConfig *pConfig, tPuntos *puntaje, unsigned *tiempo, tCola *historialOp);
 int comandoEntregar(tSimulacion *sim, tHistorial *opActual);
-int _buscarMuelle(tMuelle *muelles, unsigned cantMuelles, const char *codMuelle);
+int buscarMuelle(tMuelle *muelles, unsigned cantMuelles, const char *codMuelle);
 int comandoDescargar(tSimulacion *sim, const char *codMuelle, const char *codZona, tPuntos *puntaje, tHistorial *opActual);
 int comandoReubicar(tSimulacion *sim, const char *codZonaA, const char *codZonaB, tHistorial *opActual);
 int comandoVer(tSimulacion *sim);

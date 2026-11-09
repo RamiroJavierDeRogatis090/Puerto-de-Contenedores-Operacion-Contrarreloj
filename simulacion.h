@@ -15,6 +15,9 @@
 #define BLOQUEO_OP 1
 #define NO_BLOQUEO_OP 0
 
+#define FIN_NORMAL 1
+#define FIN_BLOQUEO 2
+
 typedef struct
 {
     int puntos;

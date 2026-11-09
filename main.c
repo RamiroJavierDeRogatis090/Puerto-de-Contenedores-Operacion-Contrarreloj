@@ -34,7 +34,7 @@ int main()
     {
         return EXIT_FAILURE;
     }
-    printf("Ingrese su nombre: ");
+    printf("Ingrese su apellido y nombre: ");
     scanf(" %49[^\n]", nombre);
     normalizarNombre(nombre);
     if(obtenerOperadorActual(&indiceOperadores, nombre, &operadorActual, ARCH_OPERADORES, ARCH_INDICE) != TODO_OK)
@@ -68,6 +68,7 @@ int main()
             else
                 puts("NO SE PUDO CARGAR EL ARCHIVO DE PUERTO.");
 
+            ///fflush(stdin);
             if(simulacionPrincipal(&escenario, &config, &resultadoJornada, &tiempoUtilizado))
             {
                 puts("SE EJECUTO LA SIMULACION.");

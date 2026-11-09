@@ -2,7 +2,6 @@
 #include "simulacion.h"
 #include "comando.h"
 
-
 int actualizarArribos(tLista *arribos, tCola *colaB, tCola *colaK, unsigned tiempo)
 {
     tArribo arriboActual;
@@ -59,7 +58,9 @@ int asignarBuqueAMuelle(tMuelle *muelles, tCola *colaB, int cantMuelles)
             {
                 (muelles+i)->buque = malloc(sizeof(tBuque));
                 if((muelles+i)->buque == NULL)
+                {
                     return MEMORIA_LLENA;
+                }
                 *(muelles+i)->buque = buqueLocal;
             }
         }
@@ -74,7 +75,9 @@ tMuelle* crearMuelles(unsigned cantMuelles)
     tMuelle *muelles = malloc(sizeof(tMuelle)*cantMuelles);
 
     if(muelles == NULL)
+    {
         return NULL;
+    }
 
     for(i = 0; i < cantMuelles; i++)
     {
@@ -98,7 +101,9 @@ int crearZonas(tLista *zonas, unsigned cantZonas, unsigned capPilas)
         crearPila(&zonaLocal.contenedores);
 
         if(!InsertarAlFinalLista(zonas, &zonaLocal, sizeof(tZona)))
+        {
             return MEMORIA_LLENA;
+        }
     }
     return EXITO;
 }
@@ -117,7 +122,9 @@ int simulacionPrincipal(tEscenario *pEsc, const tConfig *pConfig, tPuntos *punta
     crearCola(&sim.colaCamiones);
     CrearLista(&sim.zonas);
     if(!crearZonas(&sim.zonas, sim.escenario->cantZonas, sim.escenario->capacidadPila))
+    {
         return MEMORIA_LLENA;
+    }
 
     sim.muelle = crearMuelles(sim.escenario->cantMuelles);
 
@@ -137,7 +144,7 @@ int simulacionPrincipal(tEscenario *pEsc, const tConfig *pConfig, tPuntos *punta
     {
         actualizarArribos(&sim.escenario->arribos, &sim.colaBuques, &sim.colaCamiones, tiempo);
         asignarBuqueAMuelle(sim.muelle, &sim.colaBuques, pEsc->cantMuelles);
-        printf("AVANCE AUTOMATICO");
+        printf("\nAVANCE AUTOMATICO\n");
         system("pause");
     }
 
@@ -146,11 +153,11 @@ int simulacionPrincipal(tEscenario *pEsc, const tConfig *pConfig, tPuntos *punta
         if(ListaVacia(&sim.escenario->arribos) && !verEstadoMuelles(sim.muelle, sim.escenario->cantMuelles) &&
            colaVacia(&sim.colaBuques) && colaVacia(&sim.colaCamiones))
         {
-            bandFin = 1;
+            bandFin = FIN_NORMAL;
         }
         else if(verificarBloqueoOperativo(&sim))
         {
-            bandFin = 2;
+            bandFin = FIN_BLOQUEO;
         }
 
         if(!bandFin)
@@ -171,9 +178,9 @@ int simulacionPrincipal(tEscenario *pEsc, const tConfig *pConfig, tPuntos *punta
         }
     }
 
-    if(bandFin == 2)
+    if(bandFin == FIN_BLOQUEO)
     {
-        printf("\n---BLOQUEO OPERATIVO---\n---LAS ZONAS DE ALMACENAMIENTO ESTAN LLENAS Y NO HAY CAMIONES QUE PIDAN LOS CONTENEDORES---\n");
+        fprintf(stderr,"\n---BLOQUEO OPERATIVO---\n---LAS ZONAS DE ALMACENAMIENTO ESTAN LLENAS Y NO HAY CAMIONES QUE PIDAN LOS CONTENEDORES---\n");
         actualizarArribos(&sim.escenario->arribos, &sim.colaBuques, &sim.colaCamiones, pEsc->duracionJornada);
     }
 
@@ -216,7 +223,9 @@ int verEstadoMuelles(tMuelle *muelle, int cantMuelles)
     for(int i=0; i < cantMuelles ; i++)
     {
         if((muelle+i)->buque != NULL)
+        {
             return BUQUE_ATRACADO;
+        }
     }
     return MUELLES_VACIOS;
 }
@@ -258,7 +267,9 @@ void contarPenalizaciones(tPuntos *puntaje, tCola *colaCamiones)
     tCamion camion;
 
     while(desacolar(colaCamiones, &camion, sizeof(tCamion)))
+    {
         puntaje->camionesPen++;
+    }
 
     puntaje->puntos -= (puntaje->camionesPen * PUNTOS_PEN_CAMION);
 }
@@ -300,7 +311,6 @@ int avanceAutomatico(tSimulacion *sim, unsigned *tiempo)
             return AVANZADO;
         }
     }
-
     return NO_AVANZADO;
 }
 
@@ -357,7 +367,9 @@ int verificarBloqueoOperativo(tSimulacion *sim)
            verTope(&zonaLocal.contenedores, contTope, TAM_CONTENEDOR))
         {
             if(strcmp(contTope, camionLocal.idContenedor) == 0)
+            {
                 topeCoincide = 1;
+            }
         }
         InsertarAlFinalLista(&listaAux, &zonaLocal, sizeof(tZona));
     }

@@ -94,9 +94,9 @@ int InsertarEnOrdenLista(tLista *pl, void *dato, unsigned cantBytes, int cmp(con
 
     nodoNuevo->dato = malloc(cantBytes);
 
-    if(nodoNuevo == NULL)
+    if(nodoNuevo->dato == NULL)
     {
-        free(nodoNuevo->dato);
+        free(nodoNuevo);
         return MEMORIA_LLENA;
     }
 

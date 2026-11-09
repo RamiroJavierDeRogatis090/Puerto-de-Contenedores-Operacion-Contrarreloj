@@ -84,3 +84,166 @@
 	"cola.h"
 	"lista.h"
 
+1794243161 source:c:\users\usuario\onedrive\desktop\cosas de la facu\algoritmos y estructuras de datos\puertomainversionbeta\arbol.c
+	"arbol.h"
+
+1794243161 c:\users\usuario\onedrive\desktop\cosas de la facu\algoritmos y estructuras de datos\puertomainversionbeta\arbol.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1794243161 source:c:\users\usuario\onedrive\desktop\cosas de la facu\algoritmos y estructuras de datos\puertomainversionbeta\archivo.c
+	"archivo.h"
+
+1794243161 c:\users\usuario\onedrive\desktop\cosas de la facu\algoritmos y estructuras de datos\puertomainversionbeta\archivo.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1794243161 source:c:\users\usuario\onedrive\desktop\cosas de la facu\algoritmos y estructuras de datos\puertomainversionbeta\cola.c
+	"cola.h"
+
+1794243161 c:\users\usuario\onedrive\desktop\cosas de la facu\algoritmos y estructuras de datos\puertomainversionbeta\cola.h
+	<stdlib.h>
+	<string.h>
+	"nodo.h"
+
+1794243161 c:\users\usuario\onedrive\desktop\cosas de la facu\algoritmos y estructuras de datos\puertomainversionbeta\nodo.h
+
+1794255751 source:c:\users\usuario\onedrive\desktop\cosas de la facu\algoritmos y estructuras de datos\puertomainversionbeta\comando.c
+	"comando.h"
+
+1794255760 c:\users\usuario\onedrive\desktop\cosas de la facu\algoritmos y estructuras de datos\puertomainversionbeta\comando.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"configuracion.h"
+	"escenario.h"
+	"simulacion.h"
+	"estructuras.h"
+	"pila.h"
+	"cola.h"
+	"lista.h"
+
+1794243161 c:\users\usuario\onedrive\desktop\cosas de la facu\algoritmos y estructuras de datos\puertomainversionbeta\configuracion.h
+	<stdio.h>
+	<string.h>
+	"pila.h"
+	"lista.h"
+	"cola.h"
+	"archivo.h"
+
+1794243161 c:\users\usuario\onedrive\desktop\cosas de la facu\algoritmos y estructuras de datos\puertomainversionbeta\pila.h
+	<stdlib.h>
+	<string.h>
+	"nodo.h"
+
+1794243161 c:\users\usuario\onedrive\desktop\cosas de la facu\algoritmos y estructuras de datos\puertomainversionbeta\lista.h
+	<stdlib.h>
+	<string.h>
+	"nodo.h"
+
+1794243161 c:\users\usuario\onedrive\desktop\cosas de la facu\algoritmos y estructuras de datos\puertomainversionbeta\escenario.h
+	<time.h>
+	"configuracion.h"
+	"estructuras.h"
+	"pila.h"
+	"cola.h"
+	"lista.h"
+	"archivo.h"
+
+1794243161 c:\users\usuario\onedrive\desktop\cosas de la facu\algoritmos y estructuras de datos\puertomainversionbeta\estructuras.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"pila.h"
+	"cola.h"
+	"lista.h"
+
+1794255893 c:\users\usuario\onedrive\desktop\cosas de la facu\algoritmos y estructuras de datos\puertomainversionbeta\simulacion.h
+	"escenario.h"
+	"configuracion.h"
+	"estructuras.h"
+
+1794243161 source:c:\users\usuario\onedrive\desktop\cosas de la facu\algoritmos y estructuras de datos\puertomainversionbeta\configuracion.c
+	"configuracion.h"
+
+1794243161 source:c:\users\usuario\onedrive\desktop\cosas de la facu\algoritmos y estructuras de datos\puertomainversionbeta\escenario.c
+	"escenario.h"
+	"simulacion.h"
+
+1794243161 source:c:\users\usuario\onedrive\desktop\cosas de la facu\algoritmos y estructuras de datos\puertomainversionbeta\indice.c
+	"indice.h"
+
+1794243161 c:\users\usuario\onedrive\desktop\cosas de la facu\algoritmos y estructuras de datos\puertomainversionbeta\indice.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"arbol.h"
+	"archivo.h"
+	"operador.h"
+
+1794243161 c:\users\usuario\onedrive\desktop\cosas de la facu\algoritmos y estructuras de datos\puertomainversionbeta\operador.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"arbol.h"
+
+1794243161 source:c:\users\usuario\onedrive\desktop\cosas de la facu\algoritmos y estructuras de datos\puertomainversionbeta\interfaz.c
+	"interfaz.h"
+
+1794243161 c:\users\usuario\onedrive\desktop\cosas de la facu\algoritmos y estructuras de datos\puertomainversionbeta\interfaz.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+
+1794243161 source:c:\users\usuario\onedrive\desktop\cosas de la facu\algoritmos y estructuras de datos\puertomainversionbeta\jornada.c
+	"jornada.h"
+
+1794243161 c:\users\usuario\onedrive\desktop\cosas de la facu\algoritmos y estructuras de datos\puertomainversionbeta\jornada.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"simulacion.h"
+	"indice.h"
+
+1794243161 source:c:\users\usuario\onedrive\desktop\cosas de la facu\algoritmos y estructuras de datos\puertomainversionbeta\lista.c
+	"lista.h"
+
+1794255166 source:c:\users\usuario\onedrive\desktop\cosas de la facu\algoritmos y estructuras de datos\puertomainversionbeta\main.c
+	<stdio.h>
+	<stdlib.h>
+	"archivo.h"
+	"interfaz.h"
+	"estructuras.h"
+	"simulacion.h"
+	"operador.h"
+	"indice.h"
+	"jornada.h"
+	"ranking.h"
+
+1794243161 c:\users\usuario\onedrive\desktop\cosas de la facu\algoritmos y estructuras de datos\puertomainversionbeta\ranking.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"operador.h"
+	"arbol.h"
+	"archivo.h"
+
+1794243161 source:c:\users\usuario\onedrive\desktop\cosas de la facu\algoritmos y estructuras de datos\puertomainversionbeta\operador.c
+	"operador.h"
+	"indice.h"
+
+1794243161 source:c:\users\usuario\onedrive\desktop\cosas de la facu\algoritmos y estructuras de datos\puertomainversionbeta\pila.c
+	"pila.h"
+
+1794243161 source:c:\users\usuario\onedrive\desktop\cosas de la facu\algoritmos y estructuras de datos\puertomainversionbeta\ranking.c
+	"ranking.h"
+
+1794243161 source:c:\users\usuario\onedrive\desktop\cosas de la facu\algoritmos y estructuras de datos\puertomainversionbeta\simulacion.c
+	"estructuras.h"
+	"simulacion.h"
+	"comando.h"
+

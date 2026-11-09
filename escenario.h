@@ -1,6 +1,14 @@
 #ifndef ESCENARIO_H_INCLUDED
 #define ESCENARIO_H_INCLUDED
 
+#include <time.h>
+#include "configuracion.h"
+#include "estructuras.h"
+#include "pila.h"
+#include "cola.h"
+#include "lista.h"
+#include "archivo.h"
+
 #define MEM_INS 1
 #define ESC_GEN 1
 #define ESC_CAR 1
@@ -10,14 +18,6 @@
 #define ARRIBO_MENOR   -1
 #define ARRIBO_IGUAL    0
 #define ARRIBO_MAYOR    1
-
-#include <time.h>
-#include "configuracion.h"
-#include "estructuras.h"
-#include "pila.h"
-#include "cola.h"
-#include "lista.h"
-#include "archivo.h"
 
 typedef struct
 {
