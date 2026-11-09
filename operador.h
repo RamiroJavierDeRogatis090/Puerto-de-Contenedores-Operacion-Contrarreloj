@@ -26,6 +26,7 @@ typedef struct
     int puntajeAcumulado;
 }tOperador;
 
+int solicitarNombreOperador(char *nombre);
 char *normalizarNombre(char* cad);
 int buscarOperador(const tArbol *pa, const char *nombre, tOperador *operador, const char *nombreArchivo);
 int registrarOperador(tArbol *pa, const char *nombre, tOperador *operador, const char *nombreArchivo, const char *nombreArchivoIdx);
