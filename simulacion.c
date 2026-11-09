@@ -48,7 +48,9 @@ int asignarBuqueAMuelle(tMuelle *muelles, tCola *colaB, int cantMuelles)
     int i = 0;
 
     if(colaVacia(colaB))
+    {
         return COLA_VACIA;
+    }
 
     while(i < cantMuelles && !colaVacia(colaB))
     {

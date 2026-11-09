@@ -14,7 +14,9 @@ int colaLLena(const tCola *pC, unsigned cantBytes)
     auxNodo = malloc(sizeof(tNodo));
 
     if(auxNodo == NULL)
+    {
         return COLA_LLENA;
+    }
 
     auxDato = malloc(cantBytes);
 
@@ -38,12 +40,16 @@ int acolar(tCola *pC, const void *dato, unsigned cantBytes)
     char *auxDato;
 
     if(pC == NULL || dato == NULL)
+    {
         return ERROR;
+    }
 
     nodoNuevo = malloc(sizeof(tNodo));
 
     if(nodoNuevo == NULL)
+    {
         return COLA_LLENA;
+    }
 
     auxDato = malloc(cantBytes);
 
@@ -60,9 +66,13 @@ int acolar(tCola *pC, const void *dato, unsigned cantBytes)
     nodoNuevo->sig = NULL;
 
     if(pC->pri == NULL)
+    {
         pC->pri = nodoNuevo;
+    }
     else
+    {
         pC->ult->sig = nodoNuevo;
+    }
 
     pC->ult = nodoNuevo;
 
@@ -75,10 +85,14 @@ int desacolar(tCola *pC, void *dato, unsigned cantBytes)
     unsigned tamCopiar;
 
     if(pC == NULL || dato == NULL)
+    {
         return ERROR;
+    }
 
     if(pC->pri == NULL)
+    {
         return COLA_VACIA;
+    }
 
     elim = pC->pri;
 
@@ -92,7 +106,9 @@ int desacolar(tCola *pC, void *dato, unsigned cantBytes)
     free(elim);
 
     if(pC->pri == NULL)
+    {
         pC->ult = NULL;
+    }
 
     return DESACOLADO;
 }
@@ -103,10 +119,14 @@ int verPrimeroEnCola(const tCola *pC, void *dato, unsigned cantBytes)
     unsigned tamCopiar;
 
     if(pC == NULL || dato == NULL)
+    {
         return ERROR;
+    }
 
     if(pC->pri == NULL)
+    {
         return COLA_VACIA;
+    }
 
     nodo = pC->pri;
 
@@ -132,15 +152,3 @@ void vaciarCola(tCola *pC)
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-

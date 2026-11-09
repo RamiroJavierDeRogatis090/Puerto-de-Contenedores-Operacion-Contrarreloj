@@ -17,7 +17,9 @@ int InsertarAlFinalLista(tLista *pl, const void *dato, unsigned cantBytes)
     nodoNuevo = (tNodo*) malloc(sizeof(tNodo));
 
     if(nodoNuevo == NULL)
+    {
         return MEMORIA_LLENA;
+    }
 
     nodoNuevo->dato = malloc(cantBytes);
 
@@ -62,7 +64,9 @@ int ListaLlena(const tLista *pl, unsigned cantBytes)
     nodo = (tNodo*) malloc(sizeof(tNodo));
 
     if(nodo == NULL)
+    {
         return MEMORIA_LLENA;
+    }
 
     nodo->dato = malloc(cantBytes);
 
@@ -90,7 +94,9 @@ int InsertarEnOrdenLista(tLista *pl, void *dato, unsigned cantBytes, int cmp(con
     nodoNuevo = (tNodo*) malloc(sizeof(tNodo));
 
     if(nodoNuevo == NULL)
+    {
         return MEMORIA_LLENA;
+    }
 
     nodoNuevo->dato = malloc(cantBytes);
 
@@ -120,12 +126,16 @@ int InsertarAlFinalListaSinDuplicados(tLista *pl, const void *dato, unsigned can
     }
 
     if(comparador == 0)
+    {
         return MISMO_DATO;
+    }
 
     nodoNuevo = (tNodo*) malloc(sizeof(tNodo));
 
     if(nodoNuevo == NULL)
+    {
         return MEMORIA_LLENA;
+    }
 
     nodoNuevo->dato = malloc(cantBytes);
 
@@ -149,7 +159,9 @@ int EliminarUltimoLista(tLista *pl)
     tNodo *elim;
 
     if(*pl == NULL)
+    {
         return LISTA_VACIA;
+    }
 
     while((*pl)->sig != NULL)
     {
@@ -169,12 +181,16 @@ int insertarAlComienzo(tLista *pl, const void *dato, unsigned cantBytes)
     tNodo *nuevoNodo;
 
     if(*pl == NULL)
+    {
         return LISTA_VACIA;
+    }
 
     nuevoNodo = (tNodo*) malloc(sizeof(tNodo));
 
     if(nuevoNodo == NULL)
+    {
         return MEMORIA_LLENA;
+    }
 
     nuevoNodo->dato = malloc(cantBytes);
 
@@ -195,7 +211,9 @@ int insertarAlComienzo(tLista *pl, const void *dato, unsigned cantBytes)
 int verPrimeroLista(tLista *pl, void *dato, unsigned cantBytes)
 {
     if(*pl == NULL)
+    {
         return LISTA_VACIA;
+    }
 
     memcpy(dato, (*pl)->dato, MIN((*pl)->tamDato, cantBytes));
 
@@ -205,10 +223,14 @@ int verPrimeroLista(tLista *pl, void *dato, unsigned cantBytes)
 int verUltimoLista(tLista *pl, void *dato, unsigned cantBytes)
 {
     if(*pl == NULL)
+    {
         return LISTA_VACIA;
+    }
 
     while((*pl)->sig != NULL)
+    {
         pl = &(*pl)->sig;
+    }
 
     memcpy(dato, (*pl)->dato, MIN((*pl)->tamDato, cantBytes));
 
@@ -220,7 +242,9 @@ int sacarPrimeroLista(tLista *pl, void *dato, unsigned cantBytes)
     tNodo *elim;
 
     if(*pl == NULL)
+    {
         return LISTA_VACIA;
+    }
 
     elim = *pl;
 
@@ -233,5 +257,3 @@ int sacarPrimeroLista(tLista *pl, void *dato, unsigned cantBytes)
 
     return ELIMINADO;
 }
-
-
