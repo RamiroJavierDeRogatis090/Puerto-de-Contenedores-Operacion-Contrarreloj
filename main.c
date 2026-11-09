@@ -36,6 +36,7 @@ int main()
     }
     printf("Ingrese su nombre: ");
     scanf(" %49[^\n]", nombre);
+    normalizarNombre(nombre);
     if(obtenerOperadorActual(&indiceOperadores, nombre, &operadorActual, ARCH_OPERADORES, ARCH_INDICE) != TODO_OK)
     {
         return EXIT_FAILURE;

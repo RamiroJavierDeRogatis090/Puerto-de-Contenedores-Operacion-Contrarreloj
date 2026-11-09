@@ -1,6 +1,65 @@
 #include "operador.h"
 #include "indice.h"
 
+char *normalizarNombre(char* cad)
+{
+    char *lect = cad;
+    char *esc = cad;
+
+
+    while (*lect && isspace((unsigned char)*lect)) lect++;
+
+    int primeraLetra = 1;
+
+    while (*lect) {
+        if (isspace((unsigned char)*lect)) {
+
+            if (esc > cad && *(esc - 1) != ' ')
+                *esc++ = ' ';
+            while (*lect && isspace((unsigned char)*lect)) lect++;
+            primeraLetra = 1;
+        } else if (*lect == ',') {
+            if (esc > cad && *(esc - 1) == ' ') esc--;
+            *esc++ = ',';
+            lect++;
+
+
+            if (*lect != ' ') {
+                size_t len = strlen(lect);
+                memmove(esc + 1, lect, len + 1);
+                *esc = ' ';
+                esc++;
+                lect = esc;
+            }
+
+            primeraLetra = 1;
+        } else {
+            if (primeraLetra) {
+                *esc++ = toupper((unsigned char)*lect);
+                primeraLetra = 0;
+            } else {
+                *esc++ = tolower((unsigned char)*lect);
+            }
+            lect++;
+        }
+    }
+
+    if (esc > cad && isspace((unsigned char)*(esc - 1))) esc--;
+    *esc = '\0';
+
+
+    if (!strchr(cad, ',')) {
+        char *primerEspacio = strchr(cad, ' ');
+        if (primerEspacio) {
+            memmove(primerEspacio + 2, primerEspacio + 1, strlen(primerEspacio + 1) + 1);
+            *primerEspacio = ',';
+            *(primerEspacio + 1) = ' ';
+        }
+    }
+
+    return cad;
+}
+
 int buscarOperador(const tArbol *pa, const char *nombre, tOperador *operador, const char *nombreArchivo)
 {
     FILE *arch;

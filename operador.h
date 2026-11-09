@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 #include "arbol.h"
 
 #define MAX_TAM_NOMBRE 50
@@ -25,6 +26,7 @@ typedef struct
     int puntajeAcumulado;
 }tOperador;
 
+char *normalizarNombre(char* cad);
 int buscarOperador(const tArbol *pa, const char *nombre, tOperador *operador, const char *nombreArchivo);
 int registrarOperador(tArbol *pa, const char *nombre, tOperador *operador, const char *nombreArchivo, const char *nombreArchivoIdx);
 int iniciarGestionOperadores(tArbol *pa, const char *nombreArchivo, const char *nombreArchivoIdx);
