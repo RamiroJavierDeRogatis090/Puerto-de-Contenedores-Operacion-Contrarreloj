@@ -28,7 +28,6 @@ typedef struct
     tLista arribos;
 }tEscenario;
 
-
 typedef struct
 {
     unsigned nroBuque;

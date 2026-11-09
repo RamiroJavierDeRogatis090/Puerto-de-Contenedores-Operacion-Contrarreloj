@@ -6,8 +6,9 @@
 #include <string.h>
 #include "arbol.h"
 #include "archivo.h"
+#include "operador.h"  ///PORQUE YA TIENE MAX_TAM_NOMBRE
 
-#define TAM_MAX_NOMBRE 50
+#define MAX_TAM_NOMBRE 50
 
 #define ERROR_ARCHIVO_INDICE 0
 #define TODO_OK 1
@@ -16,7 +17,7 @@
 
 typedef struct
 {
-    char nombre[TAM_MAX_NOMBRE];
+    char nombre[MAX_TAM_NOMBRE];
 }tClave;
 
 typedef struct

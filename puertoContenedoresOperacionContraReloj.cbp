@@ -64,6 +64,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="interfaz.h" />
+		<Unit filename="jornada.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="jornada.h" />
 		<Unit filename="lista.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -72,10 +76,18 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="nodo.h" />
+		<Unit filename="operador.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="operador.h" />
 		<Unit filename="pila.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="pila.h" />
+		<Unit filename="ranking.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="ranking.h" />
 		<Unit filename="simulacion.c">
 			<Option compilerVar="CC" />
 		</Unit>

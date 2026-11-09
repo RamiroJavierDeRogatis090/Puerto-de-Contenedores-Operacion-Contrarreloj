@@ -103,7 +103,155 @@ int crearZonas(tLista *zonas, unsigned cantZonas, unsigned capPilas)
     return EXITO;
 }
 
-int simulacionPrincipal(tEscenario *pEsc, const tConfig *pConfig)
+//int simulacionPrincipal(tEscenario *pEsc, const tConfig *pConfig)
+//{
+//    unsigned tiempo = 0;
+//    tPuntos puntaje = {0,0,0,0,0};
+//    tSimulacion sim;
+//    tCola historialOp;
+//    int bandFin = 0;
+//
+//    sim.escenario = pEsc;
+//
+//    crearCola(&sim.colaBuques);
+//    crearCola(&sim.colaCamiones);
+//    CrearLista(&sim.zonas);
+//    if(!crearZonas(&sim.zonas, sim.escenario->cantZonas, sim.escenario->capacidadPila))
+//        return MEMORIA_LLENA;
+//
+//    sim.muelle = crearMuelles(sim.escenario->cantMuelles);
+//
+//    if(sim.muelle == NULL)
+//    {
+//        vaciarZonas(&sim.zonas);
+//        return MEMORIA_LLENA;
+//    }
+//
+//    crearCola(&historialOp);
+//
+//    actualizarArribos(&sim.escenario->arribos, &sim.colaBuques, &sim.colaCamiones, tiempo);
+//
+//    asignarBuqueAMuelle(sim.muelle, &sim.colaBuques, pEsc->cantMuelles);
+//
+//    while(tiempo <= pEsc->duracionJornada && !bandFin)
+//    {
+//        if(ListaVacia(&sim.escenario->arribos) && !verEstadoMuelles(sim.muelle, sim.escenario->cantMuelles) && colaVacia(&sim.colaBuques) && colaVacia(&sim.colaCamiones))
+//            bandFin = 1;
+//
+//        if(!bandFin)
+//        {
+//            operaciones(&sim, pConfig, &puntaje, &tiempo, &historialOp);
+//
+//            actualizarArribos(&sim.escenario->arribos, &sim.colaBuques, &sim.colaCamiones, tiempo);
+//
+//            asignarBuqueAMuelle(sim.muelle, &sim.colaBuques, pEsc->cantMuelles);
+//        }
+//    }
+//
+//    printf("\nFIN DE SIMULACION\n");
+//
+//    contarPenalizaciones(&puntaje, &sim.colaCamiones);
+//
+//    printf("\n---PUNTAJE---\n");
+//
+//    printf("Tiempo utilizado: %d / %d.\n", tiempo, pEsc->duracionJornada);
+//
+//    printf("Puntos: %d\nBuques descargados: %u\nContenedores entregados: %u\nReubicaciones: %u\nCamiones penalizados: %u\n",
+//           puntaje.puntos, puntaje.buquesDesc, puntaje.contEntregados, puntaje.cantReorg, puntaje.camionesPen);
+//
+//    system("pause");
+//
+//    system("cls");
+//
+//    mostrarHistorialOperaciones(&historialOp);
+//
+//    system("pause");
+//
+//    vaciarListaArribos(&sim.escenario->arribos);
+//    vaciarMuelles(sim.muelle, sim.escenario->cantMuelles);
+//    vaciarColaBuques(&sim.colaBuques);
+//    vaciarCola(&sim.colaCamiones);
+//    vaciarZonas(&sim.zonas);
+//
+//    return EXITO;
+//}
+
+//int simulacionPrincipal(tEscenario *pEsc, const tConfig *pConfig, tPuntos *puntajeFinal)
+//{
+//    unsigned tiempo = 0;
+//    tPuntos puntaje = {0,0,0,0,0};
+//    tSimulacion sim;
+//    tCola historialOp;
+//    int bandFin = 0;
+//
+//    sim.escenario = pEsc;
+//
+//    crearCola(&sim.colaBuques);
+//    crearCola(&sim.colaCamiones);
+//    CrearLista(&sim.zonas);
+//    if(!crearZonas(&sim.zonas, sim.escenario->cantZonas, sim.escenario->capacidadPila))
+//        return MEMORIA_LLENA;
+//
+//    sim.muelle = crearMuelles(sim.escenario->cantMuelles);
+//
+//    if(sim.muelle == NULL)
+//    {
+//        vaciarZonas(&sim.zonas);
+//        return MEMORIA_LLENA;
+//    }
+//
+//    crearCola(&historialOp);
+//
+//    actualizarArribos(&sim.escenario->arribos, &sim.colaBuques, &sim.colaCamiones, tiempo);
+//
+//    asignarBuqueAMuelle(sim.muelle, &sim.colaBuques, pEsc->cantMuelles);
+//
+//    while(tiempo <= pEsc->duracionJornada && !bandFin)
+//    {
+//        if(ListaVacia(&sim.escenario->arribos) && !verEstadoMuelles(sim.muelle, sim.escenario->cantMuelles) && colaVacia(&sim.colaBuques) && colaVacia(&sim.colaCamiones))
+//            bandFin = 1;
+//
+//        if(!bandFin)
+//        {
+//            operaciones(&sim, pConfig, &puntaje, &tiempo, &historialOp);
+//
+//            actualizarArribos(&sim.escenario->arribos, &sim.colaBuques, &sim.colaCamiones, tiempo);
+//
+//            asignarBuqueAMuelle(sim.muelle, &sim.colaBuques, pEsc->cantMuelles);
+//        }
+//    }
+//
+//    printf("\nFIN DE SIMULACION\n");
+//
+//    contarPenalizaciones(&puntaje, &sim.colaCamiones);
+//
+//    *puntajeFinal = puntaje;
+//
+//    printf("\n---PUNTAJE---\n");
+//
+//    printf("Tiempo utilizado: %d / %d.\n", tiempo, pEsc->duracionJornada);
+//
+//    printf("Puntos: %d\nBuques descargados: %u\nContenedores entregados: %u\nReubicaciones: %u\nCamiones penalizados: %u\n",
+//           puntaje.puntos, puntaje.buquesDesc, puntaje.contEntregados, puntaje.cantReorg, puntaje.camionesPen);
+//
+//    system("pause");
+//
+//    system("cls");
+//
+//    mostrarHistorialOperaciones(&historialOp);
+//
+//    system("pause");
+//
+//    vaciarListaArribos(&sim.escenario->arribos);
+//    vaciarMuelles(sim.muelle, sim.escenario->cantMuelles);
+//    vaciarColaBuques(&sim.colaBuques);
+//    vaciarCola(&sim.colaCamiones);
+//    vaciarZonas(&sim.zonas);
+//
+//    return EXITO;
+//}
+
+int simulacionPrincipal(tEscenario *pEsc, const tConfig *pConfig, tPuntos *puntajeFinal, unsigned *tiempoUtilizado)
 {
     unsigned tiempo = 0;
     tPuntos puntaje = {0,0,0,0,0};
@@ -151,6 +299,10 @@ int simulacionPrincipal(tEscenario *pEsc, const tConfig *pConfig)
     printf("\nFIN DE SIMULACION\n");
 
     contarPenalizaciones(&puntaje, &sim.colaCamiones);
+
+    *puntajeFinal = puntaje;
+
+    *tiempoUtilizado = tiempo;
 
     printf("\n---PUNTAJE---\n");
 

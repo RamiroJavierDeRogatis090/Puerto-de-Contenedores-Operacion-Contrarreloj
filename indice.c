@@ -58,8 +58,8 @@ int registrarNuevoUsuarioEnIndice(tArbol *pa, const char *nombre, unsigned posNu
 {
     tIndice nuevo;
     int ret;
-    strncpy(nuevo.clave.nombre, nombre, TAM_MAX_NOMBRE - 1);
-    nuevo.clave.nombre[TAM_MAX_NOMBRE - 1] = '\0';
+    strncpy(nuevo.clave.nombre, nombre, MAX_TAM_NOMBRE - 1);
+    nuevo.clave.nombre[MAX_TAM_NOMBRE - 1] = '\0';
     nuevo.indiceRegistro = posNueva;
     ret = insertarEnArbol(pa, &nuevo, sizeof(tIndice), compararClaveIdx);
     if(ret != TODO_OK)

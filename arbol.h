@@ -13,11 +13,11 @@
 #define DATO_ENCONTRADO 1
 #define CLA_DUP 2
 
-typedef struct sNodo
+typedef struct sNodoArbol
 {
     void *info;
     unsigned tamInfo;
-    struct sNodo *izq,
+    struct sNodoArbol *izq,
                  *der;
 }tNodoArbol;
 
