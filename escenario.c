@@ -25,11 +25,8 @@ int escenario_generar(tConfig cfg, const char* arch)
         return MEM_INS;
     }
 
-    pf = fopen(arch,"wt");
-
-    if(pf == NULL)
+    if(abrirArchivo(&pf, arch, "wt") != TODO_OK)
     {
-        fprintf(stderr,"Error: no se pudo crear '%s'\n", arch);
         free(contenedores);
         return ERR_ARCH;
     }
@@ -126,11 +123,8 @@ int escenario_cargar(const char* arch, tEscenario* p, tConfig *conf)
     if(arch == NULL || p == NULL)
         return ERR_ARCH;
 
-    pf = fopen(arch,"rt");
-
-    if(!pf)
+    if(abrirArchivo(&pf, arch, "rt") != TODO_OK)
     {
-        fprintf(stderr,"Error al abrir '%s'\n", arch);
         return ERR_ARCH;
     }
 

@@ -17,7 +17,7 @@
 #include "pila.h"
 #include "cola.h"
 #include "lista.h"
-
+#include "archivo.h"
 
 typedef struct
 {
@@ -27,7 +27,6 @@ typedef struct
     unsigned capacidadPila;
     tLista arribos;
 }tEscenario;
-
 
 typedef struct
 {

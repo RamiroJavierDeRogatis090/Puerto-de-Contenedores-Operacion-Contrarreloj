@@ -8,6 +8,7 @@
 #include "pila.h"
 #include "lista.h"
 #include "cola.h"
+#include "archivo.h"
 
 ///MACROS
 

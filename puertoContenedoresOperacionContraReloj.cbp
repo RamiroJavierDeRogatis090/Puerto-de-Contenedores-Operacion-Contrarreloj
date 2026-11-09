@@ -31,6 +31,14 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="arbol.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="arbol.h" />
+		<Unit filename="archivo.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="archivo.h" />
 		<Unit filename="cola.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -48,6 +56,18 @@
 		</Unit>
 		<Unit filename="escenario.h" />
 		<Unit filename="estructuras.h" />
+		<Unit filename="indice.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="indice.h" />
+		<Unit filename="interfaz.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="interfaz.h" />
+		<Unit filename="jornada.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="jornada.h" />
 		<Unit filename="lista.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -56,10 +76,18 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="nodo.h" />
+		<Unit filename="operador.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="operador.h" />
 		<Unit filename="pila.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="pila.h" />
+		<Unit filename="ranking.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="ranking.h" />
 		<Unit filename="simulacion.c">
 			<Option compilerVar="CC" />
 		</Unit>

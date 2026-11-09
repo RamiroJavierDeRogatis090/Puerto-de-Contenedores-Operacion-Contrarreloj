@@ -35,8 +35,9 @@ int verEstadoMuelles(tMuelle *muelle, int cantMuelles);
 void vaciarMuelles(tMuelle *muelle, int cantMuelles);
 void vaciarColaBuques(tCola *cBuques);
 void vaciarZonas(tLista *zonas);
-int simulacionPrincipal(tEscenario *pEsc, const tConfig *pConfig);
+//int simulacionPrincipal(tEscenario *pEsc, const tConfig *pConfig);
+//int simulacionPrincipal(tEscenario *pEsc, const tConfig *pConfig, tPuntos *puntajeFinal);
+int simulacionPrincipal(tEscenario *pEsc, const tConfig *pConfig, tPuntos *puntajeFinal, unsigned *tiempoUtilizado);
 void contarPenalizaciones(tPuntos *puntaje, tCola *colaCamiones);
-
 
 #endif // SIMULACION_H_INCLUDED

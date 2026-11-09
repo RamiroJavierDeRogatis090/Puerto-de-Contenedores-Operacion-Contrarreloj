@@ -103,7 +103,7 @@ int crearZonas(tLista *zonas, unsigned cantZonas, unsigned capPilas)
     return EXITO;
 }
 
-int simulacionPrincipal(tEscenario *pEsc, const tConfig *pConfig)
+int simulacionPrincipal(tEscenario *pEsc, const tConfig *pConfig, tPuntos *puntajeFinal, unsigned *tiempoUtilizado)
 {
     unsigned tiempo = 0;
     tPuntos puntaje = {0,0,0,0,0};
@@ -151,6 +151,10 @@ int simulacionPrincipal(tEscenario *pEsc, const tConfig *pConfig)
     printf("\nFIN DE SIMULACION\n");
 
     contarPenalizaciones(&puntaje, &sim.colaCamiones);
+
+    *puntajeFinal = puntaje;
+
+    *tiempoUtilizado = tiempo;
 
     printf("\n---PUNTAJE---\n");
 
