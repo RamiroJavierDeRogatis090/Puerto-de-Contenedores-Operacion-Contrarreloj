@@ -9,6 +9,12 @@
 #define PUNTOS_CONT_ENTREGADO 10
 #define PUNTOS_BUQUE_LIBRE 5
 
+#define AVANZADO 1
+#define NO_AVANZADO 0
+
+#define BLOQUEO_OP 1
+#define NO_BLOQUEO_OP 0
+
 typedef struct
 {
     int puntos;
@@ -35,9 +41,11 @@ int verEstadoMuelles(tMuelle *muelle, int cantMuelles);
 void vaciarMuelles(tMuelle *muelle, int cantMuelles);
 void vaciarColaBuques(tCola *cBuques);
 void vaciarZonas(tLista *zonas);
-//int simulacionPrincipal(tEscenario *pEsc, const tConfig *pConfig);
-//int simulacionPrincipal(tEscenario *pEsc, const tConfig *pConfig, tPuntos *puntajeFinal);
 int simulacionPrincipal(tEscenario *pEsc, const tConfig *pConfig, tPuntos *puntajeFinal, unsigned *tiempoUtilizado);
 void contarPenalizaciones(tPuntos *puntaje, tCola *colaCamiones);
+int verEstadoZonas(tLista *zonas);
+int avanceAutomatico(tSimulacion *sim, unsigned *tiempo);
+int obtenerProximoCamion(tSimulacion *sim, tCamion *camion);
+int verificarBloqueoOperativo(tSimulacion *sim);
 
 #endif // SIMULACION_H_INCLUDED
