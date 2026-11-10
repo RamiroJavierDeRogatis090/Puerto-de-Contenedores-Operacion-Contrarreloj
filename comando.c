@@ -17,14 +17,13 @@ void operaciones(tSimulacion *sim, const tConfig *pConfig, tPuntos *puntaje, uns
 
         printf("\nOPERADOR>");
 
-        fflush(stdin);
-
-        if(fgets(comando, TAM_COMANDO, stdin) == NULL)
+        do
         {
-            comando[0] = '\0';
-        }
-
-        sscanf(comando, "%s %s %s", op, origen, destino);
+            if(fgets(comando, TAM_COMANDO, stdin) == NULL)
+            {
+                comando[0] = '\0';
+            }
+        } while(sscanf(comando, "%s %s %s", op, origen, destino) <= 0);
 
         if(strcmpi(op, OP_DESCARGAR) == 0)
         {

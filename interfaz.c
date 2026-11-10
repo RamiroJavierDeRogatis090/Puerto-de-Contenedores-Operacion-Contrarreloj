@@ -23,6 +23,6 @@ char opcion(const char matriz_menu[][MAX_TEXTO_MENU], const char *titulo, const 
     }
     printf("\n\n%s: ", mensaje);
     fflush(stdin);
-    scanf("%c", &opc);
+    scanf(" %c", &opc);
     return toupper(opc);
 }

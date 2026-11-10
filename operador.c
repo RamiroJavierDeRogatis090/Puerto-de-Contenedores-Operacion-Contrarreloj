@@ -60,7 +60,8 @@ char *normalizarNombre(char* cad)
             lect++;
 
 
-            if (*lect != ' ') {
+            if (*lect != ' ')
+            {
                 size_t len = strlen(lect);
                 memmove(esc + 1, lect, len + 1);
                 *esc = ' ';
@@ -70,7 +71,8 @@ char *normalizarNombre(char* cad)
 
             primeraLetra = 1;
         } else {
-            if (primeraLetra) {
+            if (primeraLetra)
+            {
                 *esc++ = toupper((unsigned char)*lect);
                 primeraLetra = 0;
             } else {
@@ -86,7 +88,8 @@ char *normalizarNombre(char* cad)
 
     if (!strchr(cad, ',')) {
         char *primerEspacio = strchr(cad, ' ');
-        if (primerEspacio) {
+        if (primerEspacio)
+        {
             memmove(primerEspacio + 2, primerEspacio + 1, strlen(primerEspacio + 1) + 1);
             *primerEspacio = ',';
             *(primerEspacio + 1) = ' ';
