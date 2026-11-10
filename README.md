@@ -77,17 +77,17 @@ Todos los TDAs fueron desarrollados de manera genérica usando punteros `void*`:
 
 ## 🔗 Repositorio
 
-* GitHub: [Ingresar URL del repo acá]
+* GitHub: https://github.com/RamiroJavierDeRogatis090/Puerto-de-Contenedores-Operacion-Contrarreloj
 
 ---
 
 ## 📷 Capturas del Juego
 
 ### Menú Principal
-![Menú Principal](./imagenMenu.jpeg)
+![Menú Principal](./capturas/imagenMenu.jpeg)
 
 ### En plena simulación
-![Jugando](./imagenJugando.jpeg)
+![Jugando](./capturas/imagenJugando.jpeg)
 
 ### Historial de Operaciones
-![Operaciones](./imagenOperaciones.jpeg)
+![Operaciones](./capturas/imagenOperaciones.jpeg)
