@@ -15,7 +15,7 @@ Simulación interactiva por consola desarrollada en **C** en la que asumís el r
 * De Rogatis, Ramiro Javier | GitHub: `@ramirojavierderogatis090`
 * Gatti, Leandro Ezequiel | GitHub: `@lean-gatti`
 * Ruiz, Alex  | GitHub: `@alexur15`
-* Porti, Jeremias | GitHub: `@jerePorti`
+* Portilla Martínez, Jeremias | GitHub: `@jerePorti`
 
 
 
