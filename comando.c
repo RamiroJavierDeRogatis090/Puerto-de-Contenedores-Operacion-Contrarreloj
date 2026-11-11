@@ -258,7 +258,7 @@ int comandoReubicar(tSimulacion *sim, const char *codZonaA, const char *codZonaB
         }
         else if(strcmpi(zonaAux.idZona, codZonaB) == 0)
         {
-            apilar(&zonaAux.contenedores, contMover, strlen(contMover) + 1);
+            apilar(&zonaAux.contenedores, contMover, TAM_CONTENEDOR);
             zonaAux.cantAlmacenada++;
             strcpy(opActual->destino, zonaAux.idZona);
             strcpy(opActual->contenedor, contMover);
