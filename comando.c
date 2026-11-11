@@ -7,7 +7,7 @@ void operaciones(tSimulacion *sim, const tConfig *pConfig, tPuntos *puntaje, uns
     tHistorial opActual;
 
     system("cls");
-    mostrarEstadoTurno(sim, *tiempo);
+    mostrarEstadoTurno(sim, *tiempo, puntaje);
 
     while(operacionCompletada == 0)
     {
@@ -385,7 +385,7 @@ int comandoVer(tSimulacion *sim)
     return OK;
 }
 
-void mostrarEstadoTurno(tSimulacion *sim, unsigned tiempo)
+void mostrarEstadoTurno(tSimulacion *sim, unsigned tiempo, tPuntos *puntaje)
 {
     int i, esPrimero;
     char contTope[TAM_CONTENEDOR];
@@ -456,6 +456,8 @@ void mostrarEstadoTurno(tSimulacion *sim, unsigned tiempo)
     {
         printf("Cola camiones: vacia\n");
     }
+
+    printf("\nPuntos: %d\n", puntaje->puntos);
 }
 
 

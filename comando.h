@@ -55,7 +55,7 @@ int buscarMuelle(tMuelle *muelles, unsigned cantMuelles, const char *codMuelle);
 int comandoDescargar(tSimulacion *sim, const char *codMuelle, const char *codZona, tPuntos *puntaje, tHistorial *opActual);
 int comandoReubicar(tSimulacion *sim, const char *codZonaA, const char *codZonaB, tHistorial *opActual);
 int comandoVer(tSimulacion *sim);
-void mostrarEstadoTurno(tSimulacion *sim, unsigned tiempo);
+void mostrarEstadoTurno(tSimulacion *sim, unsigned tiempo, tPuntos *puntaje);
 void mostrarHistorialOperaciones(tCola *historialOp);
 
 
