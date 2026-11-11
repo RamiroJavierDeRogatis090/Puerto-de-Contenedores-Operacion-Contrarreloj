@@ -26,7 +26,7 @@ int solicitarNombreOperador(char *nombre)
 {
     do
     {
-        printf("Ingrese su apellido y nombre: ");
+        printf("Ingrese su apellido y nombre (sin caracteres especiales): ");
         scanf(" %49[^\n]", nombre);
         if(!validarNombre(nombre))
         {
